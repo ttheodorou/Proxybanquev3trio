@@ -15,11 +15,20 @@
 
 <h:body>
 	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="content">
 
+			<h:form>
+				<p:growl id="msgs" showDetail="true" />
 
+				<h3 style="margin-top: 0">Liste des Clients</h3>
+				<p:orderList value="#{virementbean.listeDesClients}" var="city"
+					controlsLocation="none" itemLabel="#{city}" itemValue="#{city}" />
+				<p:commandButton value="Submit" update="displayCities"
+					oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
 
+			</h:form>
 
-
+		</ui:define>
 
 
 	</ui:composition>
