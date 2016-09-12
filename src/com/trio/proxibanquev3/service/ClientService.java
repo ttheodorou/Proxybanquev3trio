@@ -5,7 +5,10 @@ package com.trio.proxibanquev3.service;
 
 import java.util.List;
 
-import com.trio.proxibanquev3.dao.ClientDAO;
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
+
+import com.trio.proxibanquev3.dao.IClientDAO;
 import com.trio.proxibanquev3.domaine.Client;
 import com.trio.proxibanquev3.exception.DAOException;
 
@@ -17,9 +20,11 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
+@Model
 public class ClientService {
-
-	private ClientDAO clientDAO = new ClientDAO();
+	
+	@Inject
+	private IClientDAO clientDAO;// = new ClientDAO();
 
 	public void creerUnClient(Client client) throws DAOException {
 		clientDAO.creerUnClient(client);

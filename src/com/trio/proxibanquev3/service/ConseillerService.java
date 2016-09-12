@@ -5,7 +5,10 @@ package com.trio.proxibanquev3.service;
 
 import java.util.List;
 
-import com.trio.proxibanquev3.dao.ConseillerDAO;
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
+
+import com.trio.proxibanquev3.dao.IConseillerDAO;
 import com.trio.proxibanquev3.domaine.Conseiller;
 import com.trio.proxibanquev3.exception.DAOException;
 
@@ -17,10 +20,14 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
+@Model
 public class ConseillerService {
+	
+	@Inject
+	private IConseillerDAO conseillerDAO ;//= new ConseillerDAO();
 
-	private ConseillerDAO conseillerDAO = new ConseillerDAO();
-
+	
+	
 	public void creerUnConseiller(Conseiller conseiller) throws DAOException {
 		conseillerDAO.creerUnConseiller(conseiller);
 	}

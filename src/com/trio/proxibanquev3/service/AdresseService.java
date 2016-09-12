@@ -2,7 +2,10 @@ package com.trio.proxibanquev3.service;
 
 import java.util.List;
 
-import com.trio.proxibanquev3.dao.AdresseDAO;
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
+
+import com.trio.proxibanquev3.dao.IAdresseDAO;
 import com.trio.proxibanquev3.domaine.Adresse;
 import com.trio.proxibanquev3.exception.DAOException;
 
@@ -14,9 +17,11 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
+@Model
 public class AdresseService {
-
-	private AdresseDAO adresseDAO = new AdresseDAO();
+	
+	@Inject
+	private IAdresseDAO adresseDAO;// = new AdresseDAO();
 
 	public void creerUneAdresse(Adresse adresse) throws DAOException {
 		adresseDAO.creerUneAdresse(adresse);

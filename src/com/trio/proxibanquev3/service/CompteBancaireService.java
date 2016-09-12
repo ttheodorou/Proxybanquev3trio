@@ -2,7 +2,10 @@ package com.trio.proxibanquev3.service;
 
 import java.util.List;
 
-import com.trio.proxibanquev3.dao.CompteBancaireDAO;
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
+
+import com.trio.proxibanquev3.dao.ICompteBancaireDAO;
 import com.trio.proxibanquev3.domaine.CompteBancaire;
 import com.trio.proxibanquev3.exception.DAOException;
 import com.trio.proxibanquev3.exception.ServiceException;
@@ -15,9 +18,11 @@ import com.trio.proxibanquev3.exception.ServiceException;
  * @author Vincent Blameble
  *
  */
+@Model
 public class CompteBancaireService {
 
-	private CompteBancaireDAO compteBancaireDAO = new CompteBancaireDAO();
+	@Inject
+	private ICompteBancaireDAO compteBancaireDAO ;//= new CompteBancaireDAO();
 
 	
 	 

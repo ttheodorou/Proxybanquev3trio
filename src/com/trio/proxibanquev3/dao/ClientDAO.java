@@ -3,6 +3,7 @@ package com.trio.proxibanquev3.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -24,7 +25,8 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-public class ClientDAO {
+@Model
+public class ClientDAO implements IClientDAO {
 
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
@@ -32,6 +34,10 @@ public class ClientDAO {
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#startContext()
+	 */
+	@Override
 	public void startContext() {
 		if (em == null) {
 			em = emf.createEntityManager();
@@ -39,6 +45,10 @@ public class ClientDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#closeContext()
+	 */
+	@Override
 	public void closeContext() {
 		if (em != null) {
 			em.close();
@@ -46,6 +56,10 @@ public class ClientDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#creerUnClient(com.trio.proxibanquev3.domaine.Client)
+	 */
+	@Override
 	public void creerUnClient(Client client) throws DAOException {
 		try {
 			startContext();
@@ -63,6 +77,10 @@ public class ClientDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#lireToutesLesClients()
+	 */
+	@Override
 	public List<Client> lireToutesLesClients() throws DAOException {
 		List<Client> clients = new ArrayList<Client>();
 		try {
@@ -86,6 +104,10 @@ public class ClientDAO {
 		return clients;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#lireToutesLesClientsByidConseiller(long)
+	 */
+	@Override
 	public List<Client> lireToutesLesClientsByidConseiller(long idConseiller) throws DAOException {
 		List<Client> clients = new ArrayList<Client>();
 		try {
@@ -110,6 +132,10 @@ public class ClientDAO {
 		return clients;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#lireToutesLesClientsByidConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	 */
+	@Override
 	public List<Client> lireToutesLesClientsByidConseiller(Conseiller conseiller) throws DAOException {
 		List<Client> clients = new ArrayList<Client>();
 		try {
@@ -133,6 +159,10 @@ public class ClientDAO {
 		}
 		return clients;
 	}
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#lireUnClient(long)
+	 */
+	@Override
 	public Client lireUnClient(long idClient) throws DAOException {
 		Client client = null;
 		try {
@@ -160,6 +190,10 @@ public class ClientDAO {
 		return client;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#mAJUnClient(com.trio.proxibanquev3.domaine.Client)
+	 */
+	@Override
 	public void mAJUnClient(Client client) throws DAOException {
 		try {
 			startContext();
@@ -176,6 +210,10 @@ public class ClientDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IClientDAO#supprimerUnClient(com.trio.proxibanquev3.domaine.Client)
+	 */
+	@Override
 	public void supprimerUnClient(Client client) throws DAOException {
 		try {
 			startContext();

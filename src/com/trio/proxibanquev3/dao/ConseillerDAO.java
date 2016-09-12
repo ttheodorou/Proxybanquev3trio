@@ -3,6 +3,7 @@ package com.trio.proxibanquev3.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -24,13 +25,18 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-public class ConseillerDAO {
+@Model
+public class ConseillerDAO implements IConseillerDAO {
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
 	private EntityManagerFactory emf = EntityManagerFactorySingleton.Instance();
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#startContext()
+	 */
+	@Override
 	public void startContext() {
 		if (em == null) {
 			em = emf.createEntityManager();
@@ -38,6 +44,10 @@ public class ConseillerDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#closeContext()
+	 */
+	@Override
 	public void closeContext() {
 		if (em != null) {
 			em.close();
@@ -45,6 +55,10 @@ public class ConseillerDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#creerUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	 */
+	@Override
 	public void creerUnConseiller(Conseiller conseiller) throws DAOException {
 		try {
 			startContext();
@@ -62,6 +76,10 @@ public class ConseillerDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#lireToutesLesConseillers()
+	 */
+	@Override
 	public List<Conseiller> lireToutesLesConseillers() throws DAOException {
 		List<Conseiller> conseillers = new ArrayList<Conseiller>();
 		try {
@@ -85,6 +103,10 @@ public class ConseillerDAO {
 		return conseillers;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#lireUnConseiller(long)
+	 */
+	@Override
 	public Conseiller lireUnConseiller(long idConseiller) throws DAOException {
 		Conseiller conseiller = null;
 
@@ -113,6 +135,10 @@ public class ConseillerDAO {
 		return conseiller;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#mAJUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	 */
+	@Override
 	public void mAJUnConseiller(Conseiller conseiller) throws DAOException {
 		try {
 			startContext();
@@ -129,6 +155,10 @@ public class ConseillerDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#supprimerUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	 */
+	@Override
 	public void supprimerUnConseiller(Conseiller conseiller) throws DAOException {
 		try {
 			startContext();
@@ -146,6 +176,10 @@ public class ConseillerDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#authentification(java.lang.String, java.lang.String)
+	 */
+	@Override
 	public boolean authentification(String login, String password) throws DAOException {
 
 		String mdp = null;

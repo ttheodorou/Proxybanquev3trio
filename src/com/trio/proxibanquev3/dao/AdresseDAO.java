@@ -6,6 +6,7 @@ package com.trio.proxibanquev3.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -25,7 +26,8 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-public class AdresseDAO {
+@Model
+public class AdresseDAO implements IAdresseDAO {
 
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
@@ -33,6 +35,10 @@ public class AdresseDAO {
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IAdresseDAO#startContext()
+	 */
+	@Override
 	public void startContext() {
 		if (em == null) {
 			em = emf.createEntityManager();
@@ -40,6 +46,10 @@ public class AdresseDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IAdresseDAO#closeContext()
+	 */
+	@Override
 	public void closeContext() {
 		if (em != null) {
 			em.close();
@@ -47,6 +57,10 @@ public class AdresseDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IAdresseDAO#creerUneAdresse(com.trio.proxibanquev3.domaine.Adresse)
+	 */
+	@Override
 	public void creerUneAdresse(Adresse adresse) throws DAOException {
 		try {
 			startContext();
@@ -64,6 +78,10 @@ public class AdresseDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IAdresseDAO#lireToutesLesAdresses()
+	 */
+	@Override
 	public List<Adresse> lireToutesLesAdresses() throws DAOException {
 		List<Adresse> adresses = new ArrayList<Adresse>();
 		try {
@@ -87,6 +105,10 @@ public class AdresseDAO {
 		return adresses;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IAdresseDAO#lireUneAdresse(long)
+	 */
+	@Override
 	public Adresse lireUneAdresse(long idAdresse) throws DAOException {
 		Adresse adresse = null;
 		try {
@@ -114,6 +136,10 @@ public class AdresseDAO {
 		return adresse;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IAdresseDAO#mAJUneAdresse(com.trio.proxibanquev3.domaine.Adresse)
+	 */
+	@Override
 	public void mAJUneAdresse(Adresse adresse) throws DAOException {
 		try {
 			startContext();
@@ -130,6 +156,10 @@ public class AdresseDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IAdresseDAO#supprimerUneAdresse(com.trio.proxibanquev3.domaine.Adresse)
+	 */
+	@Override
 	public void supprimerUneAdresse(Adresse adresse) throws DAOException {
 		try {
 			startContext();
