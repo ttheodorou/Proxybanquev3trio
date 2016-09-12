@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  * Created by Stagiaire on 12/09/2016.
  */
-@ManagedBean
+@ManagedBean(name = "loginBean")
 @SessionScoped
 public class LoginBean implements Serializable{
 
@@ -57,7 +57,7 @@ public class LoginBean implements Serializable{
                  msg.setSeverity(FacesMessage.SEVERITY_ERROR);
                  FacesContext.getCurrentInstance().addMessage(null, msg);
 
-                 return navigateBean.redirectToLogin();
+                 return navigateBean.toLogin();
              }
 
         } catch (DAOException e) {

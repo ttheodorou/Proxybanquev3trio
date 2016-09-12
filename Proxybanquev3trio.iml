@@ -25,7 +25,7 @@
         <datasource-mapping>
           <factory-entry name="proxibanquev3-pu" />
         </datasource-mapping>
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/WebContent/META-INF/persistence.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
       </configuration>
     </facet>
   </component>
@@ -40,5 +40,6 @@
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.web.container" level="application" />
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.module.container" level="application" />
     <orderEntry type="library" name="taglibs-standard-jstlel-1.2.5" level="project" />
+    <orderEntry type="library" name="weld-se" level="project" />
   </component>
 </module>

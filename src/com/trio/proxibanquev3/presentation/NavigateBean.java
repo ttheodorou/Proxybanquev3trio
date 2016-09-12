@@ -24,7 +24,7 @@ public class NavigateBean implements Serializable{
      * @return l'adresse de la page login
      */
     public String redirectToLogin(){
-        return "/secured_pages/login.xhtml?faces-redirect=true";
+        return "/login.xhtml?faces-redirect=true";
     }
 
     /**
@@ -33,7 +33,7 @@ public class NavigateBean implements Serializable{
      * @return l'adresse relative de la page login
      */
     public String toLogin(){
-        return "/secured_pages/login.xhtml";
+        return "/login.xhtml";
     }
 
     /**

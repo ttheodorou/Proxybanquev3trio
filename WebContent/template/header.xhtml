@@ -11,24 +11,20 @@
 
 
 	<ui:composition>
+        <f:view>
 		<h:form>
 			<p:growl id="messages" />
-
 			<p:menubar>
-
-
-				
 				<f:facet name="options">
-					<p:commandButton  type="button"
-						value="Retour menu principal" action="menuconseiller"/>
+					<p:commandButton value="Retour menu principal" action="#{navigateBean.redirectToMenuConseiller}"/>
 				</f:facet>
 
 				<f:facet name="options">
-					<p:commandButton style="margin-right:10px" type="button"
-						value="Logout" icon="ui-icon-extlink" />
+					<p:commandButton style="margin-right:10px" action="#{loginBean.disconnect}" value="Logout" icon="ui-icon-extlink" />
 				</f:facet>
 			</p:menubar>
 		</h:form>
+        </f:view>
 	</ui:composition>
 
 
