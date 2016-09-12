@@ -79,7 +79,7 @@ public abstract class CompteBancaire {
 
 	/**
 	 * @param idCompte
-	 *            valeur définie pour de la propriété idCompte
+	 *            valeur définie pour la propriété idCompte
 	 */
 	public void setIdCompte(long idCompte) {
 		this.idCompte = idCompte;
@@ -94,7 +94,7 @@ public abstract class CompteBancaire {
 
 	/**
 	 * @param dateOuverture
-	 *            valeur définie pour de la propriété dateOuverture
+	 *            valeur définie pour la propriété dateOuverture
 	 */
 	public void setDateOuverture(Date dateOuverture) {
 		this.dateOuverture = dateOuverture;
@@ -109,7 +109,7 @@ public abstract class CompteBancaire {
 
 	/**
 	 * @param numCompte
-	 *            valeur définie pour de la propriété numCompte
+	 *            valeur définie pour la propriété numCompte
 	 */
 	public void setNumCompte(long numCompte) {
 		this.numCompte = numCompte;
@@ -124,7 +124,7 @@ public abstract class CompteBancaire {
 
 	/**
 	 * @param solde
-	 *            valeur définie pour de la propriété solde
+	 *            valeur définie pour la propriété solde
 	 */
 	public void setSolde(double solde) {
 		this.solde = solde;
@@ -139,29 +139,9 @@ public abstract class CompteBancaire {
 
 	/**
 	 * @param proprietaire
-	 *            valeur définie pour de la propriété proprietaire
+	 *            valeur définie pour la propriété proprietaire
 	 */
 	public void setProprietaire(Client proprietaire) {
 		this.proprietaire = proprietaire;
-	}
-
-	/**
-	 * credite le montant au solde du compte
-	 * 
-	 * @param montant
-	 *            montant à crediter
-	 */
-	public void credite(double montant) {
-		this.solde += montant;
-	}
-
-	/**
-	 * debite le montant au solde du compte
-	 * 
-	 * @param montant
-	 *            montant à debiter
-	 */
-	public void debite(double montant) {
-		this.solde -= montant;
 	}
 }

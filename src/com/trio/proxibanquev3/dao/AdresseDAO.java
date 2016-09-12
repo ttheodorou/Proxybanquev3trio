@@ -114,7 +114,7 @@ public class AdresseDAO {
 		return adresse;
 	}
 
-	public void MAJUneAdresse(Adresse adresse) throws DAOException {
+	public void mAJUneAdresse(Adresse adresse) throws DAOException {
 		try {
 			startContext();
 			tx.begin();
@@ -130,7 +130,7 @@ public class AdresseDAO {
 		}
 	}
 
-	public void SupprimerUneAdresse(Adresse adresse) throws DAOException {
+	public void supprimerUneAdresse(Adresse adresse) throws DAOException {
 		try {
 			startContext();
 			tx.begin();

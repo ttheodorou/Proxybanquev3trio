@@ -30,12 +30,12 @@ public class AdresseService {
 		return adresseDAO.lireUneAdresse(idAdresse);
 	}
 
-	public void MAJUneAdresse(Adresse adresse) throws DAOException {
-		adresseDAO.MAJUneAdresse(adresse);
+	public void mAJUneAdresse(Adresse adresse) throws DAOException {
+		adresseDAO.mAJUneAdresse(adresse);
 	}
 
-	public void SupprimerUneAdresse(Adresse adresse) throws DAOException {
-		adresseDAO.SupprimerUneAdresse(adresse);
+	public void supprimerUneAdresse(Adresse adresse) throws DAOException {
+		adresseDAO.supprimerUneAdresse(adresse);
 	}
 
 }

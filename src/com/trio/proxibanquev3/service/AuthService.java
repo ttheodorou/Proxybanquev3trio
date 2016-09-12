@@ -18,8 +18,8 @@ public class AuthService {
 	
 	private ConseillerDAO conseillerDAO=new ConseillerDAO();
 	
-	public boolean Authentification(String login,String password) throws DAOException{
-		return conseillerDAO.Authentification(login,password);
+	public boolean authentification(String login,String password) throws DAOException{
+		return conseillerDAO.authentification(login,password);
 	}
 
 }

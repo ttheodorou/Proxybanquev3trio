@@ -34,11 +34,11 @@ public class ConseillerService {
 	}
 
 	public void MAJUnConseiller(Conseiller conseiller) throws DAOException {
-		conseillerDAO.MAJUnConseiller(conseiller);
+		conseillerDAO.mAJUnConseiller(conseiller);
 	}
 
 	public void SupprimerUnConseiller(Conseiller conseiller) throws DAOException {
-		conseillerDAO.SupprimerUnConseiller(conseiller);
+		conseillerDAO.supprimerUnConseiller(conseiller);
 	}
 
 }

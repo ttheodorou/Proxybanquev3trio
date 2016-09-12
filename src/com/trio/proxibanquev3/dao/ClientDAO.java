@@ -160,7 +160,7 @@ public class ClientDAO {
 		return client;
 	}
 
-	public void MAJUnClient(Client client) throws DAOException {
+	public void mAJUnClient(Client client) throws DAOException {
 		try {
 			startContext();
 			tx.begin();
@@ -176,7 +176,7 @@ public class ClientDAO {
 		}
 	}
 
-	public void SupprimerUnClient(Client client) throws DAOException {
+	public void supprimerUnClient(Client client) throws DAOException {
 		try {
 			startContext();
 			tx.begin();

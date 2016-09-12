@@ -33,12 +33,12 @@ public class ClientService {
 		return clientDAO.lireUnClient(idClient);
 	}
 
-	public void MAJUnClient(Client client) throws DAOException {
-		clientDAO.MAJUnClient(client);
+	public void mAJUnClient(Client client) throws DAOException {
+		clientDAO.mAJUnClient(client);
 	}
 
-	public void SupprimerUnClient(Client client) throws DAOException {
-		clientDAO.SupprimerUnClient(client);
+	public void supprimerUnClient(Client client) throws DAOException {
+		clientDAO.supprimerUnClient(client);
 	}
 
 }

@@ -113,7 +113,7 @@ public class ConseillerDAO {
 		return conseiller;
 	}
 
-	public void MAJUnConseiller(Conseiller conseiller) throws DAOException {
+	public void mAJUnConseiller(Conseiller conseiller) throws DAOException {
 		try {
 			startContext();
 			tx.begin();
@@ -129,7 +129,7 @@ public class ConseillerDAO {
 		}
 	}
 
-	public void SupprimerUnConseiller(Conseiller conseiller) throws DAOException {
+	public void supprimerUnConseiller(Conseiller conseiller) throws DAOException {
 		try {
 			startContext();
 			tx.begin();
@@ -146,7 +146,7 @@ public class ConseillerDAO {
 		}
 	}
 
-	public boolean Authentification(String login, String password) throws DAOException {
+	public boolean authentification(String login, String password) throws DAOException {
 
 		String mdp = null;
 

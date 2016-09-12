@@ -63,7 +63,7 @@ public class CompteCourant extends CompteBancaire {
 	}
 
 	/**
-	 * @param decouvertAutorise valeur définie pour de la propriété decouvertAutorise
+	 * @param decouvertAutorise valeur définie pour la propriété decouvertAutorise
 	 */
 	public void setDecouvertAutorise(double decouvertAutorise) {
 		this.decouvertAutorise = decouvertAutorise;

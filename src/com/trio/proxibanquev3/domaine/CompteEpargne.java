@@ -63,7 +63,7 @@ public class CompteEpargne extends CompteBancaire {
 	}
 
 	/**
-	 * @param tauxRemuneration valeur définie pour de la propriété tauxRemuneration
+	 * @param tauxRemuneration valeur définie pour la propriété tauxRemuneration
 	 */
 	public void setTauxRemuneration(double tauxRemuneration) {
 		this.tauxRemuneration = tauxRemuneration;

@@ -33,6 +33,7 @@ public abstract class Personne {
 	
 	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private Adresse adresse;
+	private String telephone;
 	private String mail;
 
 	/**
@@ -70,7 +71,7 @@ public abstract class Personne {
 	}
 
 	/**
-	 * @param idConseiller valeur définie pour de la propriété idConseiller
+	 * @param idConseiller valeur définie pour la propriété idConseiller
 	 */
 	public void setIdPersonne(long idPersonne) {
 		this.idPersonne = idPersonne;
@@ -85,7 +86,7 @@ public abstract class Personne {
 
 	/**
 	 * @param nom
-	 *            valeur définie pour de la propriété nom
+	 *            valeur définie pour la propriété nom
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -100,7 +101,7 @@ public abstract class Personne {
 
 	/**
 	 * @param prenom
-	 *            valeur définie pour de la propriété prenom
+	 *            valeur définie pour la propriété prenom
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
@@ -115,10 +116,25 @@ public abstract class Personne {
 
 	/**
 	 * @param adresse
-	 *            valeur définie pour de la propriété adresse
+	 *            valeur définie pour la propriété adresse
 	 */
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+	
+	/**
+	 * @return le numero de telephone
+	 */
+	public String getTelephone() {
+		return telephone;
+	}
+
+	/**
+	 * @param adresse
+	 *            valeur définie pour le numero de telephone
+	 */
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 	/**
@@ -130,7 +146,7 @@ public abstract class Personne {
 
 	/**
 	 * @param mail
-	 *            valeur définie pour de la propriété mail
+	 *            valeur définie pour la propriété mail
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;

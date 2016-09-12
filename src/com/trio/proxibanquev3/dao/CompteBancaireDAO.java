@@ -168,7 +168,7 @@ public class CompteBancaireDAO {
 		return compteBancaire;
 	}
 
-	public void MAJUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
+	public void mAJUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
 		try {
 			startContext();
 			tx.begin();
@@ -184,7 +184,7 @@ public class CompteBancaireDAO {
 		}
 	}
 
-	public void SupprimerUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
+	public void supprimerUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
 		try {
 			startContext();
 			tx.begin();

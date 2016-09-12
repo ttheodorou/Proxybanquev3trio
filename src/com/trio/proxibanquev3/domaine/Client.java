@@ -81,7 +81,7 @@ public class Client extends Personne {
 	}
 
 	/**
-	 * @param conseiller valeur définie pour de la propriété conseiller
+	 * @param conseiller valeur définie pour la propriété conseiller
 	 */
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
@@ -95,7 +95,7 @@ public class Client extends Personne {
 	}
 
 	/**
-	 * @param comptes valeur définie pour de la propriété comptes
+	 * @param comptes valeur définie pour la propriété comptes
 	 */
 	public void setComptes(Collection<CompteBancaire> comptes) {
 		this.comptes = comptes;

@@ -103,7 +103,7 @@ public class Conseiller extends Personne {
 	}
 
 	/**
-	 * @param login valeur définie pour de la propriété login
+	 * @param login valeur définie pour la propriété login
 	 */
 	public void setLogin(String login) {
 		this.login = login;
@@ -117,7 +117,7 @@ public class Conseiller extends Personne {
 	}
 
 	/**
-	 * @param password valeur définie pour de la propriété password
+	 * @param password valeur définie pour la propriété password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -131,7 +131,7 @@ public class Conseiller extends Personne {
 	}
 
 	/**
-	 * @param clients valeur définie pour de la propriété clients
+	 * @param clients valeur définie pour la propriété clients
 	 */
 	public void setClients(Collection<Client> clients) {
 		this.clients = clients;

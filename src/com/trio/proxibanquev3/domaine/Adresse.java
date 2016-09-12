@@ -63,7 +63,7 @@ public class Adresse {
 
 	/**
 	 * @param idAdresse
-	 *            valeur définie pour de la propriété idAdresse
+	 *            valeur définie pour la propriété idAdresse
 	 */
 	public void setIdAdresse(long idAdresse) {
 		this.idAdresse = idAdresse;
@@ -78,7 +78,7 @@ public class Adresse {
 
 	/**
 	 * @param numRue
-	 *            valeur définie pour de la propriété numRue
+	 *            valeur définie pour la propriété numRue
 	 */
 	public void setNumRue(String numRue) {
 		this.numRue = numRue;
@@ -93,7 +93,7 @@ public class Adresse {
 
 	/**
 	 * @param nomRue
-	 *            valeur définie pour de la propriété nomRue
+	 *            valeur définie pour la propriété nomRue
 	 */
 	public void setNomRue(String nomRue) {
 		this.nomRue = nomRue;
@@ -108,7 +108,7 @@ public class Adresse {
 
 	/**
 	 * @param codePostal
-	 *            valeur définie pour de la propriété codePostal
+	 *            valeur définie pour la propriété codePostal
 	 */
 	public void setCodePostal(int codePostal) {
 		this.codePostal = codePostal;
@@ -123,7 +123,7 @@ public class Adresse {
 
 	/**
 	 * @param ville
-	 *            valeur définie pour de la propriété ville
+	 *            valeur définie pour la propriété ville
 	 */
 	public void setVille(String ville) {
 		this.ville = ville;

@@ -19,14 +19,19 @@ public class CompteBancaireService {
 
 	private CompteBancaireDAO compteBancaireDAO = new CompteBancaireDAO();
 
+	
+	 
+	
+	
+	
 	private boolean debite(CompteBancaire compteDebite, double montant) throws ServiceException {
 		boolean goodWork = true;
 		try {
-			compteDebite.debite(montant);
-			compteBancaireDAO.MAJUnCompteBancaire(compteDebite);
+			compteDebite.setSolde(compteDebite.getSolde()-montant);
+			compteBancaireDAO.mAJUnCompteBancaire(compteDebite);
 		} catch (DAOException e) {
 			goodWork = false;
-			compteDebite.credite(montant);
+			compteDebite.setSolde(compteDebite.getSolde()+montant);
 			throw new ServiceException(
 					"probleme dans la couche service au niveau du debit du compte: " + e.getMessage());
 		} catch (Exception e) {
@@ -41,11 +46,11 @@ public class CompteBancaireService {
 	private boolean credite(CompteBancaire compteCredite, double montant) throws ServiceException {
 		boolean goodWork = true;
 		try {
-			compteCredite.credite(montant);
-			compteBancaireDAO.MAJUnCompteBancaire(compteCredite);
+			compteCredite.setSolde(compteCredite.getSolde()+montant);
+			compteBancaireDAO.mAJUnCompteBancaire(compteCredite);
 		} catch (DAOException e) {
 			goodWork = false;
-			compteCredite.debite(montant);
+			compteCredite.setSolde(compteCredite.getSolde()-montant);
 			throw new ServiceException(
 					"probleme dans la couche service au niveau du credit du compte: " + e.getMessage());
 		} catch (Exception e) {
@@ -87,12 +92,12 @@ public class CompteBancaireService {
 		return compteBancaireDAO.lireUnCompteBancaire(idCompteBancaire);
 	}
 
-	public void MAJUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
-		compteBancaireDAO.MAJUnCompteBancaire(compteBancaire);
+	public void mAJUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
+		compteBancaireDAO.mAJUnCompteBancaire(compteBancaire);
 	}
 
-	public void SupprimerUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
-		compteBancaireDAO.SupprimerUnCompteBancaire(compteBancaire);
+	public void supprimerUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
+		compteBancaireDAO.supprimerUnCompteBancaire(compteBancaire);
 	}
 
 }
