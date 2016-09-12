@@ -83,7 +83,7 @@ public class VirementBean implements Serializable {
 					String solde = String.valueOf(sld);
 					long idCompte = listeDesComptes.get(j).getIdCompte();
 					String idCompteStr = String.valueOf(idCompte);
-					String numEtSolde = numeroDeCompte + " solde de : " + solde+" € , id ="+idCompteStr;
+					String numEtSolde = numeroDeCompte + " solde de : " + solde + " € , id =" + idCompteStr;
 					map.put(numEtSolde, numEtSolde);
 				}
 				data.put(prenomEtNom, map);
@@ -163,7 +163,7 @@ public class VirementBean implements Serializable {
 	}
 
 	public void onCountryChange() {
-		
+
 		if (client != null && !client.equals(""))
 			comptes = data.get(client);
 		else
@@ -173,6 +173,11 @@ public class VirementBean implements Serializable {
 	public void displayLocation() {
 		FacesMessage msg;
 		if (compte != null && client != null)
+//			String compte = "voici un chiffre =554";
+//		String resultat = compte.substring(compte.lastIndexOf("=")+1, compte.length());
+//		long idCompte = Long.parseLong(resultat);
+//		System.out.println(idCompte);
+		
 			msg = new FacesMessage("Selected", compte + " of " + client);
 		else
 			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected.");
