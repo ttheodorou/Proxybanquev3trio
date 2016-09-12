@@ -8,6 +8,7 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
+import com.trio.proxibanquev3.dao.ClientDAO;
 import com.trio.proxibanquev3.dao.IClientDAO;
 import com.trio.proxibanquev3.domaine.Client;
 import com.trio.proxibanquev3.exception.DAOException;
@@ -20,11 +21,11 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-@Model
+//@Model
 public class ClientService {
 	
-	@Inject
-	private IClientDAO clientDAO;// = new ClientDAO();
+	//@Inject
+	private ClientDAO clientDAO = new ClientDAO();
 
 	public void creerUnClient(Client client) throws DAOException {
 		clientDAO.creerUnClient(client);

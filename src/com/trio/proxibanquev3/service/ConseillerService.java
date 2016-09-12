@@ -8,6 +8,7 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
+import com.trio.proxibanquev3.dao.ConseillerDAO;
 import com.trio.proxibanquev3.dao.IConseillerDAO;
 import com.trio.proxibanquev3.domaine.Conseiller;
 import com.trio.proxibanquev3.exception.DAOException;
@@ -20,11 +21,11 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-@Model
+//@Model
 public class ConseillerService {
 	
-	@Inject
-	private IConseillerDAO conseillerDAO ;//= new ConseillerDAO();
+	//@Inject
+	private ConseillerDAO conseillerDAO = new ConseillerDAO();
 
 	
 	

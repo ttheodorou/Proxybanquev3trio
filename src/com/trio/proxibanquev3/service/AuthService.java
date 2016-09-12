@@ -6,6 +6,7 @@ package com.trio.proxibanquev3.service;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
+import com.trio.proxibanquev3.dao.ConseillerDAO;
 import com.trio.proxibanquev3.dao.IConseillerDAO;
 import com.trio.proxibanquev3.exception.DAOException;
 
@@ -17,11 +18,11 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-@Model
+//@Model
 public class AuthService {
 	
-	@Inject
-	private IConseillerDAO conseillerDAO;//=new ConseillerDAO();
+	//@Inject
+	private ConseillerDAO conseillerDAO=new ConseillerDAO();
 	
 	public boolean authentification(String login,String password) throws DAOException{
 		return conseillerDAO.authentification(login,password);

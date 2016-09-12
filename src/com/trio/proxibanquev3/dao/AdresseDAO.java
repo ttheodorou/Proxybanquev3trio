@@ -26,7 +26,7 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-@Model
+//@Model
 public class AdresseDAO implements IAdresseDAO {
 
 	// private EntityManagerFactory emf =

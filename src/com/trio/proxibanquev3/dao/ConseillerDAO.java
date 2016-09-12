@@ -25,7 +25,7 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-@Model
+//@Model
 public class ConseillerDAO implements IConseillerDAO {
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
