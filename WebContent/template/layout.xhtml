@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD WHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtmll/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<!-- permet de déclarer une ressource qui se trouve dans le dossier css -->
+	<h:outputStylesheet name="common-style.css" library="css"></h:outputStylesheet>
+	<h:outputScript library="javascript" name="util.js" target="head"></h:outputScript>
+</h:head>
+
+<h:body>
+	<div id="page">
+		<!-- 	La div avec le id header représente le header -->
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/template/header.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+		<div id="content">
+			<ui:insert name="content">
+				<ui:include src="/template/content.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/template/footer.xhtml">
+					<ui:param name="auteur" value="ThomasT"></ui:param>
+				</ui:include>
+			</ui:insert>
+		</div>
+	</div>
+</h:body>
+
+</HTML>
