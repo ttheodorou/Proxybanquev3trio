@@ -3,11 +3,36 @@
 "http://www.w3.org/TR/xhtmll/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-<BODY>
+<h:body>
+
+
 	<ui:composition>
-		<h1>Site du Trio</h1>
+		<h:form>
+			<p:growl id="messages" />
+
+			<p:menubar>
+
+
+				
+				<f:facet name="options">
+					<p:commandButton  type="button"
+						value="Retour menu principal"/>
+				</f:facet>
+
+				<f:facet name="options">
+					<p:commandButton style="margin-right:10px" type="button"
+						value="Logout" icon="ui-icon-extlink" />
+				</f:facet>
+			</p:menubar>
+		</h:form>
 	</ui:composition>
-</BODY>
+
+
+</h:body>
+
+
 </HTML>
