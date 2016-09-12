@@ -56,10 +56,11 @@ public abstract class Personne {
 	 * @param mail
 	 *            adresse mail
 	 */
-	public Personne(String nom, String prenom, Adresse adresse, String mail) {
+	public Personne(String nom, String prenom, Adresse adresse,String telephone, String mail) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
+		this.telephone=telephone;
 		this.mail = mail;
 	}
 	

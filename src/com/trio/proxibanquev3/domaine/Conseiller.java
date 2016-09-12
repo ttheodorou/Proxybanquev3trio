@@ -23,11 +23,11 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Conseiller extends Personne {
-	
+
 	private String login;
 	private String password;
-	
-	@OneToMany(mappedBy="conseiller")
+
+	@OneToMany(mappedBy = "conseiller")
 	private Collection<Client> clients;
 
 	/**
@@ -58,9 +58,9 @@ public class Conseiller extends Personne {
 	 * @param clients
 	 *            liste des clients du conseiller
 	 */
-	public Conseiller(String nom, String prenom, Adresse adresse, String mail, String login, String password,
-			Collection<Client> clients) {
-		super(nom, prenom, adresse, mail);
+	public Conseiller(String nom, String prenom, Adresse adresse, String telephone, String mail, String login,
+			String password, Collection<Client> clients) {
+		super(nom, prenom, adresse, telephone, mail);
 		this.login = login;
 		this.password = password;
 		this.clients = clients;
@@ -86,14 +86,13 @@ public class Conseiller extends Personne {
 	 * @param password
 	 *            mot de passe du conseiller
 	 */
-	public Conseiller(String nom, String prenom, Adresse adresse, String mail, String login, String password) {
-		super(nom, prenom, adresse, mail);
+	public Conseiller(String nom, String prenom, Adresse adresse, String telephone, String mail, String login,
+			String password) {
+		super(nom, prenom, adresse, telephone, mail);
 		this.login = login;
 		this.password = password;
 		this.clients = new HashSet<Client>();
 	}
-
-
 
 	/**
 	 * @return le login
@@ -103,7 +102,8 @@ public class Conseiller extends Personne {
 	}
 
 	/**
-	 * @param login valeur définie pour la propriété login
+	 * @param login
+	 *            valeur définie pour la propriété login
 	 */
 	public void setLogin(String login) {
 		this.login = login;
@@ -117,7 +117,8 @@ public class Conseiller extends Personne {
 	}
 
 	/**
-	 * @param password valeur définie pour la propriété password
+	 * @param password
+	 *            valeur définie pour la propriété password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -131,12 +132,11 @@ public class Conseiller extends Personne {
 	}
 
 	/**
-	 * @param clients valeur définie pour la propriété clients
+	 * @param clients
+	 *            valeur définie pour la propriété clients
 	 */
 	public void setClients(Collection<Client> clients) {
 		this.clients = clients;
 	}
-	
-	
 
 }

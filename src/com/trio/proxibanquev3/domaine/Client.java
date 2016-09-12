@@ -47,9 +47,9 @@ public class Client extends Personne {
 	 * @param conseiller
 	 * @param comptes
 	 */
-	public Client(String nom, String prenom, Adresse adresse, String mail, Conseiller conseiller,
+	public Client(String nom, String prenom, Adresse adresse,String telephone, String mail, Conseiller conseiller,
 			Collection<CompteBancaire> comptes) {
-		super(nom, prenom, adresse, mail);
+		super(nom, prenom, adresse,telephone, mail);
 		this.conseiller = conseiller;
 		this.comptes = comptes;
 	}
@@ -67,8 +67,8 @@ public class Client extends Personne {
 	 * @param mail adresse mail 
 	 * @param conseiller conseiller chargé du dossier du client
 	 */
-	public Client(String nom, String prenom, Adresse adresse, String mail, Conseiller conseiller) {
-		super(nom, prenom, adresse, mail);
+	public Client(String nom, String prenom, Adresse adresse,String telephone, String mail, Conseiller conseiller) {
+		super(nom, prenom, adresse,telephone, mail);
 		this.conseiller = conseiller;
 		this.comptes = new HashSet<CompteBancaire>();
 	}
