@@ -25,8 +25,8 @@ import com.trio.proxibanquev3.exception.DAOException;
 // @Model
 public class ClientService implements IClientService {
 
-	@Inject
-	ClientDAO clientDAO;// = new ClientDAO();
+	//@Inject
+	ClientDAO clientDAO= new ClientDAO();
 
 	public ClientService() {
 		System.out.println("debut construction Client Service");
