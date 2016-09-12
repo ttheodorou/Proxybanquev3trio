@@ -7,6 +7,7 @@ import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -25,7 +26,7 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-//@Model
+// @Model
 public class ConseillerDAO implements IConseillerDAO {
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
@@ -33,7 +34,9 @@ public class ConseillerDAO implements IConseillerDAO {
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#startContext()
 	 */
 	@Override
@@ -44,7 +47,9 @@ public class ConseillerDAO implements IConseillerDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#closeContext()
 	 */
 	@Override
@@ -55,8 +60,12 @@ public class ConseillerDAO implements IConseillerDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#creerUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.trio.proxibanquev3.dao.IConseillerDAO#creerUnConseiller(com.trio.
+	 * proxibanquev3.domaine.Conseiller)
 	 */
 	@Override
 	public void creerUnConseiller(Conseiller conseiller) throws DAOException {
@@ -76,7 +85,9 @@ public class ConseillerDAO implements IConseillerDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#lireToutesLesConseillers()
 	 */
 	@Override
@@ -103,7 +114,9 @@ public class ConseillerDAO implements IConseillerDAO {
 		return conseillers;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#lireUnConseiller(long)
 	 */
 	@Override
@@ -135,7 +148,9 @@ public class ConseillerDAO implements IConseillerDAO {
 		return conseiller;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#lireUnConseiller(long)
 	 */
 	@Override
@@ -159,18 +174,19 @@ public class ConseillerDAO implements IConseillerDAO {
 			if (tx.isActive()) {
 				tx.rollback();
 			}
-			throw new DAOException("probleme dans la couche DAO: la lecture du conseiller avec le login " + login
-					+ " est impossible");
+			throw new DAOException(
+					"probleme dans la couche DAO: la lecture du conseiller avec le login " + login + " est impossible");
 		} finally {
 			closeContext();
 		}
 		return conseiller;
 	}
-	
-	
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#mAJUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#mAJUnConseiller(com.trio.
+	 * proxibanquev3.domaine.Conseiller)
 	 */
 	@Override
 	public void mAJUnConseiller(Conseiller conseiller) throws DAOException {
@@ -189,8 +205,12 @@ public class ConseillerDAO implements IConseillerDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#supprimerUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.trio.proxibanquev3.dao.IConseillerDAO#supprimerUnConseiller(com.trio.
+	 * proxibanquev3.domaine.Conseiller)
 	 */
 	@Override
 	public void supprimerUnConseiller(Conseiller conseiller) throws DAOException {
@@ -210,12 +230,16 @@ public class ConseillerDAO implements IConseillerDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#authentification(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.trio.proxibanquev3.dao.IConseillerDAO#authentification(java.lang.
+	 * String, java.lang.String)
 	 */
 	@Override
 	public boolean authentification(String login, String password) throws DAOException {
-
+		Conseiller conseiller = null;
 		String mdp = null;
 
 		try {
@@ -223,24 +247,34 @@ public class ConseillerDAO implements IConseillerDAO {
 			tx.begin();
 
 			CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-			CriteriaQuery<String> criteriaRequete = criteriaBuilder.createQuery(String.class);
+			CriteriaQuery<Conseiller> criteriaRequete = criteriaBuilder.createQuery(Conseiller.class);
 			Root<Conseiller> fromConseiller = criteriaRequete.from(Conseiller.class);
-			criteriaRequete.multiselect(fromConseiller.get("password"));	
+			criteriaRequete.select(fromConseiller);
 			criteriaRequete.where(criteriaBuilder.equal(fromConseiller.get("login"), login));
-			TypedQuery<String> requete = em.createQuery(criteriaRequete);
-			mdp = requete.getSingleResult();
-
+			TypedQuery<Conseiller> requete = em.createQuery(criteriaRequete);
+			conseiller = requete.getSingleResult();
 			tx.commit();
-		} catch (Exception e) {
+		}catch (NoResultException e) {
 			if (tx.isActive()) {
 				tx.rollback();
 			}
-			throw new DAOException(
-					"probleme dans la couche DAO: la lecture du password lié au login " + login + " est impossible");
+		}
+		catch (Exception e) {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+			throw e;// new DAOException(
+					// "probleme dans la couche DAO: la lecture du password lié
+					// au login " + login + " est impossible");
 		} finally {
 			closeContext();
+			if (conseiller != null) {
+				mdp = conseiller.getPassword();
+			}
 		}
-		if (password.equalsIgnoreCase(mdp)) {
+		if (mdp == null) {
+			return false;
+		} else if (password.equalsIgnoreCase(mdp)) {
 			return true;
 		} else {
 			return false;

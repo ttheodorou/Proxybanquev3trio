@@ -1,7 +1,9 @@
 package com.trio.proxibanquev3.domaine;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -27,7 +29,7 @@ public class Client extends Personne {
 	private Conseiller conseiller;
 	
 	@OneToMany(mappedBy="proprietaire")
-	private Collection<CompteBancaire> comptes;
+	private List<CompteBancaire> comptes;
 
 	/**
 	 * Constructeur d'objet Client vide:
@@ -48,7 +50,7 @@ public class Client extends Personne {
 	 * @param comptes
 	 */
 	public Client(String nom, String prenom, Adresse adresse,String telephone, String mail, Conseiller conseiller,
-			Collection<CompteBancaire> comptes) {
+			List<CompteBancaire> comptes) {
 		super(nom, prenom, adresse,telephone, mail);
 		this.conseiller = conseiller;
 		this.comptes = comptes;
@@ -70,7 +72,7 @@ public class Client extends Personne {
 	public Client(String nom, String prenom, Adresse adresse,String telephone, String mail, Conseiller conseiller) {
 		super(nom, prenom, adresse,telephone, mail);
 		this.conseiller = conseiller;
-		this.comptes = new HashSet<CompteBancaire>();
+		this.comptes = new ArrayList<CompteBancaire>();
 	}
 
 	/**
@@ -90,14 +92,14 @@ public class Client extends Personne {
 	/**
 	 * @return le comptes
 	 */
-	public Collection<CompteBancaire> getComptes() {
+	public List<CompteBancaire> getComptes() {
 		return comptes;
 	}
 
 	/**
 	 * @param comptes valeur définie pour la propriété comptes
 	 */
-	public void setComptes(Collection<CompteBancaire> comptes) {
+	public void setComptes(List<CompteBancaire> comptes) {
 		this.comptes = comptes;
 	}
 
