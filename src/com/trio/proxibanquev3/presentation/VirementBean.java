@@ -31,8 +31,12 @@ public class VirementBean implements Serializable {
 
 	private List<Client> listeDesClients = new ArrayList<Client>();
 	private List<CompteBancaire> listeDesComptes = new ArrayList<CompteBancaire>();
-	private Client client;
-	private CompteBancaire compte;
+	private String client;
+	private String compte;
+	private Map<String, String> clients;
+	private Map<String, String> comptes;
+
+	private Map<String, Map<String, String>> data = new HashMap<String, Map<String, String>>();
 
 	public Map<String, String> getClients() {
 		return clients;
@@ -53,11 +57,6 @@ public class VirementBean implements Serializable {
 	public void setData(Map<String, Map<String, String>> data) {
 		this.data = data;
 	}
-
-	private Map<String, String> clients;
-	private Map<String, String> comptes;
-
-	private Map<String, Map<String, String>> data = new HashMap<String, Map<String, String>>();
 
 	ClientService clientService = new ClientService();
 
@@ -82,12 +81,15 @@ public class VirementBean implements Serializable {
 					String numeroDeCompte = String.valueOf(numCompte);
 					double sld = listeDesComptes.get(j).getSolde();
 					String solde = String.valueOf(sld);
-					String numEtSolde = numeroDeCompte + " solde de : " + solde;
+					long idCompte = listeDesComptes.get(j).getIdCompte();
+					String idCompteStr = String.valueOf(idCompte);
+					String numEtSolde = numeroDeCompte + " solde de : " + solde+" € , id ="+idCompteStr;
 					map.put(numEtSolde, numEtSolde);
 				}
 				data.put(prenomEtNom, map);
 
 			}
+			System.out.println("");
 
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
@@ -129,7 +131,7 @@ public class VirementBean implements Serializable {
 	/**
 	 * @return the client
 	 */
-	public Client getClient() {
+	public String getClient() {
 		return client;
 	}
 
@@ -137,14 +139,14 @@ public class VirementBean implements Serializable {
 	 * @param client
 	 *            the client to set
 	 */
-	public void setClient(Client client) {
+	public void setClient(String client) {
 		this.client = client;
 	}
 
 	/**
 	 * @return the compte
 	 */
-	public CompteBancaire getCompte() {
+	public String getCompte() {
 		return compte;
 	}
 
@@ -152,7 +154,7 @@ public class VirementBean implements Serializable {
 	 * @param compte
 	 *            the compte to set
 	 */
-	public void setCompte(CompteBancaire compte) {
+	public void setCompte(String compte) {
 		this.compte = compte;
 	}
 
@@ -161,6 +163,7 @@ public class VirementBean implements Serializable {
 	}
 
 	public void onCountryChange() {
+		
 		if (client != null && !client.equals(""))
 			comptes = data.get(client);
 		else
