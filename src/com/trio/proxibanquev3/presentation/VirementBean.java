@@ -22,83 +22,79 @@ import com.trio.proxibanquev3.service.ClientService;
 
 @ManagedBean(name = "virementbean")
 @SessionScoped
-public class VirementBean implements Serializable{
+public class VirementBean implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private List<Client> listeDesClients = new ArrayList<Client>();
 	private List<CompteBancaire> listeDesComptes = new ArrayList<CompteBancaire>();
 	private Client client;
 	private CompteBancaire compte;
-	private String client2;
-	private String compte2;
-	private Map<String,String> clients;
-	private Map<String,String> comptes;
-	
-	
-	private Map<String,Map<String,String>> data = new HashMap<String, Map<String,String>>();
-	
-	
-    private String country; 
-    private String city;  
-    private Map<String,String> countries;
-    private Map<String,String> cities;
-    
-    ClientService clientService = new ClientService();
-    
-    @PostConstruct
-    public void init() {
-    	try {
+
+	public Map<String, String> getClients() {
+		return clients;
+	}
+
+	public void setClients(Map<String, String> clients) {
+		this.clients = clients;
+	}
+
+	public Map<String, String> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(Map<String, String> comptes) {
+		this.comptes = comptes;
+	}
+
+	public void setData(Map<String, Map<String, String>> data) {
+		this.data = data;
+	}
+
+	private Map<String, String> clients;
+	private Map<String, String> comptes;
+
+	private Map<String, Map<String, String>> data = new HashMap<String, Map<String, String>>();
+
+	ClientService clientService = new ClientService();
+
+	@PostConstruct
+	public void init() {
+		try {
 			listeDesClients = clientService.lireToutesLesClients();
-						
-			clients  = new HashMap<String, String>();
-			int tailleListe = listeDesClients.size();
-			
-			for (int i = 0; i < tailleListe; i++) {
+			clients = new HashMap<String, String>();
+			int tailleListeDesClients = listeDesClients.size();
+
+			for (int i = 0; i < tailleListeDesClients; i++) {
 				String prenom = listeDesClients.get(i).getPrenom();
 				String nom = listeDesClients.get(i).getNom();
 				long id = listeDesClients.get(i).getIdPersonne();
-				String prenomEtNom = prenom +" "+nom+", id : "+String.valueOf(id);
+				String prenomEtNom = prenom + " " + nom + ", id : " + String.valueOf(id);
 				clients.put(prenomEtNom, prenomEtNom);
+				Map<String, String> map = new HashMap<String, String>();
+				listeDesComptes = listeDesClients.get(i).getComptes();
+				int tailleListeDesComptes = listeDesComptes.size();
+				for (int j = 0; j < tailleListeDesComptes; j++) {
+					long numCompte = listeDesComptes.get(j).getNumCompte();
+					String numeroDeCompte = String.valueOf(numCompte);
+					double sld = listeDesComptes.get(j).getSolde();
+					String solde = String.valueOf(sld);
+					String numEtSolde = numeroDeCompte + " solde de : " + solde;
+					map.put(numEtSolde, numEtSolde);
+				}
+				data.put(prenomEtNom, map);
+
 			}
-			
-			
-	         
-	        Map<String,String> map = new HashMap<String, String>();
-	        
-	        
-	        
-	        map.put("New York", "New York");
-	        map.put("San Francisco", "San Francisco");
-	        map.put("Denver", "Denver");
-	        data.put("USA", map);
-	         
-	        map = new HashMap<String, String>();
-	        map.put("Berlin", "Berlin");
-	        map.put("Munich", "Munich");
-	        map.put("Frankfurt", "Frankfurt");
-	        data.put("Germany", map);
-	         
-	        map = new HashMap<String, String>();
-	        map.put("Sao Paolo", "Sao Paolo");
-	        map.put("Rio de Janerio", "Rio de Janerio");
-	        map.put("Salvador", "Salvador");
-	        data.put("Brazil", map);
-			
-			
-			
-			
+
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-    }
- 
-
+	}
 
 	/**
 	 * @return the listeDesClients
@@ -107,16 +103,13 @@ public class VirementBean implements Serializable{
 		return listeDesClients;
 	}
 
-
-
 	/**
-	 * @param listeDesClients the listeDesClients to set
+	 * @param listeDesClients
+	 *            the listeDesClients to set
 	 */
 	public void setListeDesClients(List<Client> listeDesClients) {
 		this.listeDesClients = listeDesClients;
 	}
-
-
 
 	/**
 	 * @return the listeDesComptes
@@ -125,16 +118,13 @@ public class VirementBean implements Serializable{
 		return listeDesComptes;
 	}
 
-
-
 	/**
-	 * @param listeDesComptes the listeDesComptes to set
+	 * @param listeDesComptes
+	 *            the listeDesComptes to set
 	 */
 	public void setListeDesComptes(List<CompteBancaire> listeDesComptes) {
 		this.listeDesComptes = listeDesComptes;
 	}
-
-
 
 	/**
 	 * @return the client
@@ -143,16 +133,13 @@ public class VirementBean implements Serializable{
 		return client;
 	}
 
-
-
 	/**
-	 * @param client the client to set
+	 * @param client
+	 *            the client to set
 	 */
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
-
 
 	/**
 	 * @return the compte
@@ -161,67 +148,33 @@ public class VirementBean implements Serializable{
 		return compte;
 	}
 
-
-
 	/**
-	 * @param compte the compte to set
+	 * @param compte
+	 *            the compte to set
 	 */
 	public void setCompte(CompteBancaire compte) {
 		this.compte = compte;
 	}
 
-
-
 	public Map<String, Map<String, String>> getData() {
-        return data;
-    }
- 
-    public String getCountry() {
-        return country;
-    }
- 
-    public void setCountry(String country) {
-        this.country = country;
-    }
- 
-    public String getCity() {
-        return city;
-    }
- 
-    public void setCity(String city) {
-        this.city = city;
-    }
- 
-    public Map<String, String> getCountries() {
-        return countries;
-    }
- 
-    public Map<String, String> getCities() {
-        return cities;
-    }
- 
-    public void onCountryChange() {
-        if(country !=null && !country.equals(""))
-            cities = data.get(country);
-        else
-            cities = new HashMap<String, String>();
-    }
-     
-    public void displayLocation() {
-        FacesMessage msg;
-        if(city != null && country != null)
-            msg = new FacesMessage("Selected", city + " of " + country);
-        else
-            msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected."); 
-             
-        FacesContext.getCurrentInstance().addMessage(null, msg);  
-    }
-	
+		return data;
+	}
 
+	public void onCountryChange() {
+		if (client != null && !client.equals(""))
+			comptes = data.get(client);
+		else
+			comptes = new HashMap<String, String>();
+	}
 
-	
-	
-	
-	
+	public void displayLocation() {
+		FacesMessage msg;
+		if (compte != null && client != null)
+			msg = new FacesMessage("Selected", compte + " of " + client);
+		else
+			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected.");
+
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
 
 }

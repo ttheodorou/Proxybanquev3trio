@@ -19,13 +19,27 @@
 
 			<h:form>
 				<p:growl id="msgs" showDetail="true" />
-
-				<h3 style="margin-top: 0">Liste des Clients</h3>
-				<p:orderList value="#{virementbean.listeDesClients}" var="city"
-					controlsLocation="none" itemLabel="#{city}" itemValue="#{city}" />
-				<p:commandButton value="Submit" update="displayCities"
-					oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
-
+ 
+    <p:panel header="Select a Location" style="margin-bottom:10px;">
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel for="client" value="Client : " />
+            <p:selectOneMenu id="client" value="#{virementbean.client}" style="width:150px">
+                <p:ajax listener="#{virementbean.onCountryChange}" update="compte" />
+                <f:selectItem itemLabel="Choisissez un client" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{virementbean.clients}" />
+            </p:selectOneMenu>
+ 
+            <p:outputLabel for="compte" value="Comptes : " />
+            <p:selectOneMenu id="compte" value="#{virementbean.compte}" style="width:150px">
+                <f:selectItem itemLabel="Choisissez un compte" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{virementbean.comptes}" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+ 
+        <p:separator />
+ 
+        <p:commandButton value="Submit" update="msgs" actionListener="#{virementbean.displayLocation}" icon="ui-icon-check" />
+    </p:panel>
 			</h:form>
 
 		</ui:define>

@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -28,7 +29,7 @@ public class Client extends Personne {
 	@ManyToOne
 	private Conseiller conseiller;
 	
-	@OneToMany(mappedBy="proprietaire")
+	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER)
 	private List<CompteBancaire> comptes;
 
 	/**
