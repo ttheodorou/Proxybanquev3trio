@@ -40,6 +40,10 @@ public class ConseillerService {
 	public Conseiller lireUnConseiller(long idConseiller) throws DAOException {
 		return conseillerDAO.lireUnConseiller(idConseiller);
 	}
+	
+	public Conseiller lireUnConseiller(String login) throws DAOException {
+		return conseillerDAO.lireUnConseiller(login);
+	}
 
 	public void MAJUnConseiller(Conseiller conseiller) throws DAOException {
 		conseillerDAO.mAJUnConseiller(conseiller);

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import com.trio.proxibanquev3.domaine.Adresse;
 import com.trio.proxibanquev3.domaine.Client;
 import com.trio.proxibanquev3.domaine.CompteCourant;
@@ -14,9 +16,11 @@ import com.trio.proxibanquev3.service.AdresseService;
 import com.trio.proxibanquev3.service.ClientService;
 import com.trio.proxibanquev3.service.CompteBancaireService;
 import com.trio.proxibanquev3.service.ConseillerService;
+import com.trio.proxibanquev3.service.IClientService;
 
 public class lanceur {
-
+	
+	
 	public static void main(String[] args) {
 
 		creationBase();
@@ -58,7 +62,7 @@ public class lanceur {
 		CompteEpargne compteEpargne3 = new CompteEpargne(204, new Date(), 55250, client6, 0.07);
 
 //		AdresseService adresseService = new AdresseService();
-		ClientService clientService = new ClientService();
+		ClientService clientService=new ClientService();
 		CompteBancaireService compteBancaireService = new CompteBancaireService();
 		ConseillerService conseillerService = new ConseillerService();
 
@@ -93,7 +97,7 @@ public class lanceur {
 			compteBancaireService.creerUnCompteBancaire(comptecourant3);
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

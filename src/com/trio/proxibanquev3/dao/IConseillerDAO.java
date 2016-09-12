@@ -23,4 +23,6 @@ public interface IConseillerDAO {
 
 	boolean authentification(String login, String password) throws DAOException;
 
+	Conseiller lireUnConseiller(String login) throws DAOException;
+
 }

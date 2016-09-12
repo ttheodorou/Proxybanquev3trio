@@ -136,6 +136,40 @@ public class ConseillerDAO implements IConseillerDAO {
 	}
 
 	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#lireUnConseiller(long)
+	 */
+	@Override
+	public Conseiller lireUnConseiller(String login) throws DAOException {
+		Conseiller conseiller = null;
+
+		try {
+			startContext();
+			tx.begin();
+
+			CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+			CriteriaQuery<Conseiller> criteriaRequete = criteriaBuilder.createQuery(Conseiller.class);
+			Root<Conseiller> fromConseiller = criteriaRequete.from(Conseiller.class);
+			criteriaRequete.select(fromConseiller);
+			criteriaRequete.where(criteriaBuilder.equal(fromConseiller.get("login"), login));
+			TypedQuery<Conseiller> requete = em.createQuery(criteriaRequete);
+			conseiller = requete.getSingleResult();
+
+			tx.commit();
+		} catch (Exception e) {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+			throw new DAOException("probleme dans la couche DAO: la lecture du conseiller avec le login " + login
+					+ " est impossible");
+		} finally {
+			closeContext();
+		}
+		return conseiller;
+	}
+	
+	
+
+	/* (non-Javadoc)
 	 * @see com.trio.proxibanquev3.dao.IConseillerDAO#mAJUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
 	 */
 	@Override

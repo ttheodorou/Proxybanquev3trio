@@ -3,6 +3,7 @@ package com.trio.proxibanquev3.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,7 +26,7 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-//@Model
+@Model
 public class ClientDAO implements IClientDAO {
 
 	// private EntityManagerFactory emf =
@@ -33,6 +34,12 @@ public class ClientDAO implements IClientDAO {
 	private EntityManagerFactory emf = EntityManagerFactorySingleton.Instance();
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
+
+	
+	public ClientDAO() {
+		System.out.println("debut constuction DAO");
+		// TODO Auto-generated constructor stub
+	}
 
 	/* (non-Javadoc)
 	 * @see com.trio.proxibanquev3.dao.IClientDAO#startContext()
@@ -229,6 +236,12 @@ public class ClientDAO implements IClientDAO {
 		} finally {
 			closeContext();
 		}
+	}
+	
+	
+	@PostConstruct
+	public void logapresconstruction(){
+		System.out.println("DAO construit client");
 	}
 
 }
