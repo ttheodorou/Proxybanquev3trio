@@ -4,12 +4,12 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2">
 
-	<application>
-		<locale-config>
-			<default-locale>fr</default-locale>
-		</locale-config>
-		<message-bundle>demoJSF.properties.MesMessages</message-bundle>
-	</application>
+	<!--<application>-->
+		<!--<locale-config>-->
+			<!--<default-locale>fr</default-locale>-->
+		<!--</locale-config>-->
+		<!--<message-bundle>demoJSF.properties.MesMessages</message-bundle>-->
+	<!--</application>-->
 
 
 <!-- 	<lifecycle> -->
