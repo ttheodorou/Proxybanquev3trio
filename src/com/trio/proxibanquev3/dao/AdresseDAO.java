@@ -3,22 +3,18 @@
  */
 package com.trio.proxibanquev3.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.trio.proxibanquev3.domaine.Adresse;
+import com.trio.proxibanquev3.exception.DAOException;
+import com.trio.proxibanquev3.service.PersistanceService;
 
-import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import org.apache.log4j.Logger;
-
-import com.trio.proxibanquev3.domaine.Adresse;
-import com.trio.proxibanquev3.exception.DAOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe permettant d'utiliser un objet AdresseDAO en charge de l'ecriture et
@@ -35,7 +31,7 @@ public class AdresseDAO implements IAdresseDAO {
 
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
-	private EntityManagerFactory emf = EntityManagerFactorySingleton.Instance();
+//	private EntityManagerFactory emf = //EntityManagerFactorySingleton.Instance();
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
 
@@ -47,7 +43,7 @@ public class AdresseDAO implements IAdresseDAO {
 	@Override
 	public void startContext() {
 		if (em == null) {
-			em = emf.createEntityManager();
+			em = PersistanceService.createEntityManager();
 			tx = em.getTransaction();
 		}
 	}

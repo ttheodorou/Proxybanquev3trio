@@ -3,10 +3,10 @@ package com.trio.proxibanquev3.dao;
 import com.trio.proxibanquev3.domaine.Client;
 import com.trio.proxibanquev3.domaine.Conseiller;
 import com.trio.proxibanquev3.exception.DAOException;
+import com.trio.proxibanquev3.service.PersistanceService;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -29,7 +29,7 @@ public class ClientDAO implements IClientDAO {
 
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
-	private EntityManagerFactory emf = EntityManagerFactorySingleton.Instance();
+//	private EntityManagerFactory emf = EntityManagerFactorySingleton.Instance();
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
 
@@ -45,7 +45,7 @@ public class ClientDAO implements IClientDAO {
 	@Override
 	public void startContext() {
 		if (em == null) {
-			em = emf.createEntityManager();
+			em = PersistanceService.createEntityManager();
 			tx = em.getTransaction();
 		}
 	}

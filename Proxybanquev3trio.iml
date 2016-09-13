@@ -52,5 +52,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="hibernate-commons-annotations-4.0.5.Final" level="project" />
   </component>
 </module>

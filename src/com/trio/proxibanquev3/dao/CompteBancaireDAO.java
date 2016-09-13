@@ -1,20 +1,18 @@
 package com.trio.proxibanquev3.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.trio.proxibanquev3.domaine.Client;
+import com.trio.proxibanquev3.domaine.CompteBancaire;
+import com.trio.proxibanquev3.exception.DAOException;
+import com.trio.proxibanquev3.service.PersistanceService;
 
-import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import com.trio.proxibanquev3.domaine.Client;
-import com.trio.proxibanquev3.domaine.CompteBancaire;
-import com.trio.proxibanquev3.exception.DAOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  ** Classe permettant d'utiliser un objet CompteBancaireDAO en charge de
@@ -30,7 +28,7 @@ import com.trio.proxibanquev3.exception.DAOException;
 public class CompteBancaireDAO implements ICompteBancaireDAO {
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
-	private EntityManagerFactory emf = EntityManagerFactorySingleton.Instance();
+//	private EntityManagerFactory emf = EntityManagerFactorySingleton.Instance();
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
 
@@ -42,7 +40,7 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 	@Override
 	public void startContext() {
 		if (em == null) {
-			em = emf.createEntityManager();
+			em = PersistanceService.createEntityManager();
 			tx = em.getTransaction();
 		}
 	}
