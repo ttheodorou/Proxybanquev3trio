@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import com.trio.proxibanquev3.dao.ClientDAO;
 import com.trio.proxibanquev3.dao.IClientDAO;
 import com.trio.proxibanquev3.domaine.Client;
+import com.trio.proxibanquev3.domaine.Conseiller;
 import com.trio.proxibanquev3.exception.DAOException;
 
 /**
@@ -22,11 +23,11 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-// @Model
+@Model
 public class ClientService implements IClientService {
 
-	//@Inject
-	ClientDAO clientDAO= new ClientDAO();
+	// @Inject
+	ClientDAO clientDAO = new ClientDAO();
 
 	public ClientService() {
 		System.out.println("debut construction Client Service");
@@ -52,6 +53,15 @@ public class ClientService implements IClientService {
 	@Override
 	public List<Client> lireToutesLesClients() throws DAOException {
 		return clientDAO.lireToutesLesClients();
+	}
+
+	
+	public List<Client> lireToutesLesClientsByidConseiller(long idConseiller) throws DAOException {
+		return clientDAO.lireToutesLesClientsByidConseiller(idConseiller);
+	}
+
+	public List<Client> lireToutesLesClientsByidConseiller(Conseiller conseiller) throws DAOException {
+		return clientDAO.lireToutesLesClientsByidConseiller(conseiller);
 	}
 
 	/*
@@ -86,12 +96,10 @@ public class ClientService implements IClientService {
 	public void supprimerUnClient(Client client) throws DAOException {
 		clientDAO.supprimerUnClient(client);
 	}
-	
-	
 
 	@PostConstruct
-	public void logapresconstruction(){
-		System.out.println("DAO construit client");
+	public void logapresconstruction() {
+		System.out.println("service construit client");
 	}
 
 }

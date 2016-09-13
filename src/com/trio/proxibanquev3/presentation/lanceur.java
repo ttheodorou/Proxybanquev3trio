@@ -23,7 +23,7 @@ public class lanceur {
 	
 	public static void main(String[] args) {
 
-		creationBase();
+		//creationBase();
 		
 	}
 	
