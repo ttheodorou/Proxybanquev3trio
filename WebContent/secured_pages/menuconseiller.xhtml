@@ -25,6 +25,18 @@
                 <h:form id="login-form">
                     <p:panel header="Bonjour #{loginBean.conseiller.prenom} #{loginBean.conseiller.nom}"
                              style="margin-bottom:10px;">
+                        
+                        <p:spacer height="2"/>
+                        <p:commandLink update=":login-form:form:clientCreateDetail"
+                                       oncomplete="PF('clientCreateDialog').show()"
+                                       title="Créer un client">
+
+                            <h:outputText value="Créer un client" style="margin:0 auto;"/>
+                            <f:setPropertyActionListener value="#{menuConseillerBean.clientToCreate}"
+                                                         target="#{menuConseillerBean.clientToCreate}"/>
+                        </p:commandLink>
+                        <p:separator/>
+                        <p:spacer height="2"/>
 
                         <h:form id="form">
                             <p:dataGrid var="client" value="#{menuConseillerBean.clients}" columns="3" layout="grid"
@@ -177,6 +189,80 @@
                                         </p:dataTable>
 
                                     </p:panelGrid>
+                                </p:outputPanel>
+                            </p:dialog>
+
+
+
+                            <p:dialog header="Création de client" widgetVar="clientCreateDialog" modal="true" showEffect="fade"
+                                      hideEffect="fade" resizable="false">
+                                <p:outputPanel id="clientCreateDetail" style="text-align:center;">
+                                    <p:panelGrid columns="2"
+                                                 columnClasses="label,value">
+                                        <f:facet name="header">
+                                            <h:graphicImage library="images" name="thomasT.jpg"/>
+                                        </f:facet>
+
+                                        <h:outputLabel for="createprenom" value="Prenom:"/>
+                                        <p:inplace id="createprenom" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.prenom}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="createnom" value="Nom:"/>
+                                        <p:inplace id="createnom" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.nom}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="createmail" value="Mail:"/>
+                                        <p:inplace id="createmail" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.mail}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="createtelephone" value="Telephone:"/>
+                                        <p:inplace id="createtelephone" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.telephone}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="createnumRue" value="Numero de rue:"/>
+                                        <p:inplace id="createnumRue" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.numRue}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="createnomRue" value="Nom de rue:"/>
+                                        <p:inplace id="createnomRue" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.nomRue}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+
+                                        <h:outputLabel for="createcodePostal" value="Code Postal:"/>
+                                        <p:inplace id="createcodePostal" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.codePostal}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="createville" value="Ville:"/>
+                                        <p:inplace id="createville" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.ville}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                    </p:panelGrid>
+
+                                    <p:spacer height="5"/>
+                                    <p:separator/>
+                                    <p>Vous pouvez modifier les champs en cliquant dessus</p>
+                                    <p:separator/>
+                                    <p:spacer height="30"/>
+
+                                    <p:commandButton value="Modifier client"
+                                                     action="#{menuConseillerBean.doSaveNewQueen}"/>
+
                                 </p:outputPanel>
                             </p:dialog>
 
