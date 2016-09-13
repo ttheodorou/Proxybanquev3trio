@@ -19,6 +19,7 @@ public class MenuConseillerBean {
 
     private List<Client> clients;
     private Client selectedClient;
+    private Client toModificateClient;
 
 
     public MenuConseillerBean() {
@@ -59,6 +60,22 @@ public class MenuConseillerBean {
         return null;
     }
 
+    public String doSaveTheQueen(){
+        ClientService clientService = new ClientService();
+        LoginBean loginBean = (LoginBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
+
+        try {
+
+            clientService.mAJUnClient(selectedClient);
+            return loginBean.getNavigateBean().redirectToMenuConseiller();
+
+        } catch (DAOException e) {
+            e.printStackTrace();
+
+            return loginBean.getNavigateBean().redirectToError(e.getMessage());
+        }
+    }
+
     public List<Client> getClients() {
         return clients;
     }
@@ -74,5 +91,12 @@ public class MenuConseillerBean {
     public void setSelectedClient(Client selectedClient) {
         this.selectedClient = selectedClient;
     }
-    
+
+    public Client getToModificateClient() {
+        return toModificateClient;
+    }
+
+    public void setToModificateClient(Client toModificateClient) {
+        this.toModificateClient = toModificateClient;
+    }
 }

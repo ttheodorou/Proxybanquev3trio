@@ -9,7 +9,7 @@
 
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Proxibanque V3 du Trio</title>
 </head>
 
@@ -23,55 +23,126 @@
             <f:view>
 
                 <h:form id="login-form">
-                <p:panel header="Bonjour #{loginBean.conseiller.prenom} #{loginBean.conseiller.nom}" style="margin-bottom:10px;">
+                    <p:panel header="Bonjour #{loginBean.conseiller.prenom} #{loginBean.conseiller.nom}"
+                             style="margin-bottom:10px;">
 
-                    <h:form id="form">
-                        <p:dataGrid var="client" value="#{menuConseillerBean.clients}" columns="3" layout="grid"
-                                    rows="12" paginator="true" id="clients"
-                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                    rowsPerPageTemplate="6,12,16">
+                        <h:form id="form">
+                            <p:dataGrid var="client" value="#{menuConseillerBean.clients}" columns="3" layout="grid"
+                                        rows="12" paginator="true" id="clients"
+                                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                        rowsPerPageTemplate="6,12,16">
 
-                            <f:facet name="header">
-                                Vous pouvez voir votre liste des clients ici
-                            </f:facet>
+                                <f:facet name="header">
+                                    Vous pouvez voir votre liste des clients ici
+                                </f:facet>
 
-                            <p:panel header="#{client.idPersonne}" style="text-align:center">
-                                <h:panelGrid columns="1" style="width:100%">
-                                    <h:graphicImage library="images" name="thomasT.jpg"/>
-
-                                    <h:outputText value="#{client.idPersonne}" />
-
-                                    <p:commandLink update=":login-form:form:clientDetail" oncomplete="PF('clientDialog').show()" title="View Detail">
-                                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-                                        <f:setPropertyActionListener value="#{client}" target="#{menuConseillerBean.selectedClient}" />
-                                    </p:commandLink>
-                                </h:panelGrid>
-                            </p:panel>
-
-                        </p:dataGrid>
-
-                        <p:dialog header="Client Infos" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                            <p:outputPanel id="clientDetail" style="text-align:center;">
-                                <p:panelGrid  columns="2" rendered="#{not empty menuConseillerBean.selectedClient}" columnClasses="label,value">
-                                    <f:facet name="header">
+                                <p:panel header="#{client.idPersonne}" style="text-align:center">
+                                    <h:panelGrid columns="1" style="width:100%">
                                         <h:graphicImage library="images" name="thomasT.jpg"/>
-                                    </f:facet>
 
-                                    <h:outputText value="Id:" />
-                                    <h:outputText value="#{menuConseillerBean.selectedClient.idPersonne}" />
+                                        <h:outputText value="#{client.prenom} #{client.nom}"/>
+                                        <h:outputText value="id = #{client.idPersonne}"/>
 
-                                    <h:outputText value="Prenom" />
-                                    <h:outputText value="#{menuConseillerBean.selectedClient.prenom}" />
+                                        <p:commandLink update=":login-form:form:clientDetail"
+                                                       oncomplete="PF('clientDialog').show()" title="View Detail">
+                                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;"/>
+                                            <f:setPropertyActionListener value="#{client}"
+                                                                         target="#{menuConseillerBean.selectedClient}"/>
+                                        </p:commandLink>
 
-                                    <h:outputText value="Nom:" />
-                                    <h:outputText value="#{menuConseillerBean.selectedClient.nom}" />
 
-                                </p:panelGrid>
-                            </p:outputPanel>
-                        </p:dialog>
-                    </h:form>
 
-                </p:panel>
+
+
+                                    </h:panelGrid>
+                                </p:panel>
+
+                            </p:dataGrid>
+
+                            <p:dialog header="Client Infos" widgetVar="clientDialog" modal="true" showEffect="fade"
+                                      hideEffect="fade" resizable="false">
+                                <p:outputPanel id="clientDetail" style="text-align:center;">
+                                    <p:panelGrid columns="2" rendered="#{not empty menuConseillerBean.selectedClient}"
+                                                 columnClasses="label,value">
+                                        <f:facet name="header">
+                                            <h:graphicImage library="images" name="thomasT.jpg"/>
+                                        </f:facet>
+
+                                        <h:outputText value="Id:"/>
+                                        <h:outputText value="#{menuConseillerBean.selectedClient.idPersonne}"/>
+
+                                        <h:outputLabel for="prenom" value="Prenom:"/>
+                                        <p:inplace id="prenom" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.prenom}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="nom" value="Nom:"/>
+                                        <p:inplace id="nom" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.nom}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="mail" value="Mail:"/>
+                                        <p:inplace id="mail" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.mail}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="telephone" value="Telephone:"/>
+                                        <p:inplace id="telephone" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.telephone}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="numRue" value="Numero de rue:"/>
+                                        <p:inplace id="numRue" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.numRue}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="nomRue" value="Nom de rue:"/>
+                                        <p:inplace id="nomRue" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.nomRue}"
+                                            required="true" label="text"/>
+                                        </p:inplace>
+
+
+                                        <h:outputLabel for="codePostal" value="Code Postal:"/>
+                                        <p:inplace id="codePostal" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.codePostal}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="ville" value="Ville:"/>
+                                        <p:inplace id="ville" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.ville}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                    </p:panelGrid>
+
+                                    <p:spacer height="5"/>
+                                    <p:separator/>
+                                    <p>Cliquez sur le champ à modifier (hors Id)</p>
+                                    <p:separator/>
+                                    <p:spacer height="30"/>
+
+                                    <p:commandButton value="Modifier client" action="#{menuConseillerBean.doSaveTheQueen}"/>
+
+                                </p:outputPanel>
+                            </p:dialog>
+
+
+
+
+
+
+
+
+                        </h:form>
+
+                    </p:panel>
                 </h:form>
 
 
