@@ -1,6 +1,7 @@
 package com.trio.proxibanquev3.presentation;
 
 import com.trio.proxibanquev3.domaine.Client;
+import com.trio.proxibanquev3.domaine.CompteBancaire;
 import com.trio.proxibanquev3.exception.DAOException;
 import com.trio.proxibanquev3.service.ClientService;
 
@@ -21,6 +22,8 @@ public class MenuConseillerBean {
     private Client selectedClient;
     private Client toModificateClient;
 
+    private List<CompteBancaire> comptes;
+
 
     public MenuConseillerBean() {
 
@@ -39,6 +42,9 @@ public class MenuConseillerBean {
                 nh.handleNavigation(fc, null, loginBean.getNavigateBean().redirectToError(e.getMessage()));
 
         }
+
+
+
     }
 
 
@@ -98,5 +104,13 @@ public class MenuConseillerBean {
 
     public void setToModificateClient(Client toModificateClient) {
         this.toModificateClient = toModificateClient;
+    }
+
+    public List<CompteBancaire> getComptes() {
+        return comptes;
+    }
+
+    public void setComptes(List<CompteBancaire> comptes) {
+        this.comptes = comptes;
     }
 }
