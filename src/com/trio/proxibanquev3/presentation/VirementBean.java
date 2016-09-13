@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.trio.proxibanquev3.domaine.Client;
@@ -26,7 +27,7 @@ import com.trio.proxibanquev3.service.CompteBancaireService;
  *
  */
 @ManagedBean(name = "virementbean")
-@SessionScoped
+@ViewScoped
 public class VirementBean implements Serializable {
 
 	/**
