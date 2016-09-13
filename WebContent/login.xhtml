@@ -1,46 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Proxibanque V3 du Trio</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <title>Proxibanque V3 du Trio</title>
 </head>
 
 <h:body>
 
 
-	<!-- déclaration du template dont la page est cliente -->
-	<ui:composition template="/template/layout.xhtml">
+    <!-- déclaration du template dont la page est cliente -->
+    <ui:composition template="/template/layout.xhtml">
 
-		<ui:define name="header">
-			<h:form>
-				<p:growl id="messages" />
+        <ui:define name="header">
+            <h:form>
+                <p:spacer height="20"/>
+            </h:form>
 
-				<p:menubar />
-			</h:form>
-		</ui:define>
+        </ui:define>
 
-		<!-- 	Redéfinission de la zone 'content' du layout -->
-		<ui:define name="content">
-			<f:view>
-				<h2>Accès à la procédure d'enregistrement</h2>
-				<h:form id="login-form">
+        <!-- 	Redéfinission de la zone 'content' du layout -->
+        <ui:define name="content">
+            <f:view>
 
-					<h:outputText value="username :"/>
-					<h:inputText value="#{loginBean.login}" id="username"/>
+                <h:form id="login-form">
+                    <p:panel header="Bienvenue ! Avant toute chose, veuillez vous logger :" style="margin-bottom:10px;">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="username :" style="font-weight:bold"/>
+                            <p:inputText value="#{loginBean.login}" id="username"/>
 
-					<h:outputText value="password :"/>
-					<h:inputText value="#{loginBean.password}" id="password"/>
-					<br/>
-					<h:commandButton id="button" value="login" action="#{loginBean.doLogin}"/>
-				</h:form>
-			</f:view>
-		</ui:define>
-	</ui:composition>
+                            <h:outputText value="password :" style="font-weight:bold"/>
+                            <p:password value="#{loginBean.password}" id="password"/>
+
+                            <p:commandButton id="button" value="login" action="#{loginBean.doLogin}"/>
+                            <p:messages autoUpdate="true" />
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+
+
+            </f:view>
+        </ui:define>
+    </ui:composition>
 
 
 </h:body>
