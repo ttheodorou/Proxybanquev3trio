@@ -5,7 +5,7 @@ import com.trio.proxibanquev3.exception.DAOException;
 import com.trio.proxibanquev3.service.ClientService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Stagiaire on 13/09/2016.
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class MenuConseillerBean {
 
     private List<Client> clients;

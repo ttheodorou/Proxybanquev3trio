@@ -27,7 +27,7 @@
 
                     <h:form id="form">
                         <p:dataGrid var="client" value="#{menuConseillerBean.clients}" columns="3" layout="grid"
-                                    rows="12" paginator="true" id="cars"
+                                    rows="12" paginator="true" id="clients"
                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                     rowsPerPageTemplate="6,12,16">
 
@@ -37,11 +37,11 @@
 
                             <p:panel header="#{client.idPersonne}" style="text-align:center">
                                 <h:panelGrid columns="1" style="width:100%">
-                                    <p:graphicImage library="images" name="thomasT.jpg"/>
+                                    <h:graphicImage library="images" name="thomasT.jpg"/>
 
                                     <h:outputText value="#{client.idPersonne}" />
 
-                                    <p:commandLink update=":form:clientDetail" oncomplete="PF('clientDialog').show()" title="View Detail">
+                                    <p:commandLink update=":login-form:form:clientDetail" oncomplete="PF('clientDialog').show()" title="View Detail">
                                         <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
                                         <f:setPropertyActionListener value="#{client}" target="#{menuConseillerBean.selectedClient}" />
                                     </p:commandLink>
@@ -54,7 +54,7 @@
                             <p:outputPanel id="clientDetail" style="text-align:center;">
                                 <p:panelGrid  columns="2" rendered="#{not empty menuConseillerBean.selectedClient}" columnClasses="label,value">
                                     <f:facet name="header">
-                                        <p:graphicImage library="images" name="thomasT.jpg"/>
+                                        <h:graphicImage library="images" name="thomasT.jpg"/>
                                     </f:facet>
 
                                     <h:outputText value="Id:" />
