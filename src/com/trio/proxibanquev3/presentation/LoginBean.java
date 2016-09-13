@@ -63,7 +63,7 @@ public class LoginBean implements Serializable{
                  msg.setSeverity(FacesMessage.SEVERITY_ERROR);
                  FacesContext.getCurrentInstance().addMessage(null, msg);
 
-                 return navigateBean.toLogin();
+                 return navigateBean.toLogin();     //la redirection n'est pas necessaire si on est déjà sur login (peut etre pas vrai si on est ailleur)
              }
 
         } catch (DAOException e) {

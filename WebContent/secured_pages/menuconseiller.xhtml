@@ -25,6 +25,52 @@
                 <h:form id="login-form">
                 <p:panel header="Bonjour #{loginBean.conseiller.prenom} #{loginBean.conseiller.nom}" style="margin-bottom:10px;">
 
+                    <h:form id="form">
+                        <p:dataGrid var="client" value="#{menuConseillerBean.clients}" columns="3" layout="grid"
+                                    rows="12" paginator="true" id="cars"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="6,12,16">
+
+                            <f:facet name="header">
+                                Vous pouvez voir votre liste des clients ici
+                            </f:facet>
+
+                            <p:panel header="#{client.idPersonne}" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage library="images" name="thomasT.jpg"/>
+
+                                    <h:outputText value="#{client.year}" />
+
+                                    <p:commandLink update=":form:clientDetail" oncomplete="PF('clientDialog').show()" title="View Detail">
+                                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                        <f:setPropertyActionListener value="#{client}" target="#{menuConseillerBean.selectedClient}" />
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </p:panel>
+
+                        </p:dataGrid>
+
+                        <p:dialog header="Client Infos" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                            <p:outputPanel id="clientDetail" style="text-align:center;">
+                                <p:panelGrid  columns="2" rendered="#{not empty menuConseillerBean.selectedCar}" columnClasses="label,value">
+                                    <f:facet name="header">
+                                        <p:graphicImage library="images" name="thomasT.jpg"/>
+                                    </f:facet>
+
+                                    <h:outputText value="Id:" />
+                                    <h:outputText value="#{menuConseillerBean.selectedClient.idPersonne}" />
+
+                                    <h:outputText value="Prenom" />
+                                    <h:outputText value="#{menuConseillerBean.selectedClient.prenom}" />
+
+                                    <h:outputText value="Nom:" />
+                                    <h:outputText value="#{menuConseillerBean.selectedClient.nom}" />
+
+                                </p:panelGrid>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+
                 </p:panel>
                 </h:form>
 
