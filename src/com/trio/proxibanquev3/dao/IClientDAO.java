@@ -32,7 +32,7 @@ public interface IClientDAO {
 	void creerUnClient(Client client) throws DAOException;
 
 	/**
-	 * renvoie la liste de tous les clients d'un conseiller enregistrés en base de donnée
+	 * renvoie la liste de tous les clients enregistrés en base de donnée
 	 * 
 	 * @return une liste de clients
 	 * @throws DAOException
@@ -41,7 +41,8 @@ public interface IClientDAO {
 	List<Client> lireToutesLesClients() throws DAOException;
 
 	/**
-	 * renvoie la liste de tous les clients d'un conseiller enregistrés en base de donnée
+	 * renvoie la liste de tous les clients d'un conseiller enregistrés en base
+	 * de donnée
 	 * 
 	 * @param idConseiller
 	 *            l'id du conseiller dont on cherche les clients
@@ -52,7 +53,8 @@ public interface IClientDAO {
 	List<Client> lireToutesLesClientsByidConseiller(long idConseiller) throws DAOException;
 
 	/**
-	 * renvoie la liste de tous les clients enregistrés en base de donnée
+	 * renvoie la liste de tous les clients d'un conseiller enregistrés en base
+	 * de donnée
 	 * 
 	 * @param conseiller
 	 *            l'objet conseiller dont on cherche les clients
@@ -75,23 +77,21 @@ public interface IClientDAO {
 	 */
 	Client lireUnClient(long idClient) throws DAOException;
 
-	
 	/**
-	 * mettre a jour l'enregistrement d'une adresse en base de donnée
+	 * mettre a jour l'enregistrement d'un client en base de donnée
 	 * 
-	 * @param adresse
-	 *            objet Adresse a mettre a jour dans la base
+	 * @param client
+	 *            objet Client a mettre a jour dans la base
 	 * @throws DAOException
 	 *             renvoie une DAOexception avec un message
 	 */
 	void mAJUnClient(Client client) throws DAOException;
 
-	
 	/**
-	 * Supprimer l'enregistrement representant un objet Adresse
+	 * Supprimer l'enregistrement representant un objet Client
 	 * 
-	 * @param adresse
-	 *            objet Adresse a supprimer de la base de donnée;
+	 * @param client
+	 *            objet Client a supprimer de la base de donnée;
 	 * @throws DAOException
 	 *             renvoie une DAOexception avec un message
 	 */
