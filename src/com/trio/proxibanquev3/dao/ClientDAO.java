@@ -1,10 +1,10 @@
 package com.trio.proxibanquev3.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.trio.proxibanquev3.domaine.Client;
+import com.trio.proxibanquev3.domaine.Conseiller;
+import com.trio.proxibanquev3.exception.DAOException;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -12,10 +12,8 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import com.trio.proxibanquev3.domaine.Client;
-import com.trio.proxibanquev3.domaine.Conseiller;
-import com.trio.proxibanquev3.exception.DAOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe permettant d'utiliser un objet ClientDAO en charge de l'ecriture et
@@ -152,7 +150,7 @@ public class ClientDAO implements IClientDAO {
 			CriteriaQuery<Client> criteriaRequete = criteriaBuilder.createQuery(Client.class);
 			Root<Client> fromclient = criteriaRequete.from(Client.class);
 			criteriaRequete.select(fromclient);
-			criteriaRequete.where(criteriaBuilder.equal(fromclient.get("conseiller_idPersonne"), conseiller.getIdPersonne()));
+			criteriaRequete.where(criteriaBuilder.equal(fromclient.get("conseiller"), conseiller));
 			TypedQuery<Client> requete = em.createQuery(criteriaRequete);
 			clients = requete.getResultList();
 			tx.commit();

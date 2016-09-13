@@ -5,7 +5,6 @@ import com.trio.proxibanquev3.exception.DAOException;
 import com.trio.proxibanquev3.service.ClientService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
@@ -20,9 +19,6 @@ public class MenuConseillerBean {
 
     private List<Client> clients;
     private Client selectedClient;
-
-    @ManagedProperty(value="#{loginBean}")
-    private LoginBean loginBean;
 
 
     public MenuConseillerBean() {
@@ -77,12 +73,5 @@ public class MenuConseillerBean {
     public void setSelectedClient(Client selectedClient) {
         this.selectedClient = selectedClient;
     }
-
-    public LoginBean getLoginBean() {
-        return loginBean;
-    }
-
-    public void setLoginBean(LoginBean loginBean) {
-        this.loginBean = loginBean;
-    }
+    
 }

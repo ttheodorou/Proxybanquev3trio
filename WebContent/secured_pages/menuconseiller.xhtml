@@ -39,7 +39,7 @@
                                 <h:panelGrid columns="1" style="width:100%">
                                     <p:graphicImage library="images" name="thomasT.jpg"/>
 
-                                    <h:outputText value="#{client.year}" />
+                                    <h:outputText value="#{client.idPersonne}" />
 
                                     <p:commandLink update=":form:clientDetail" oncomplete="PF('clientDialog').show()" title="View Detail">
                                         <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
@@ -52,7 +52,7 @@
 
                         <p:dialog header="Client Infos" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                             <p:outputPanel id="clientDetail" style="text-align:center;">
-                                <p:panelGrid  columns="2" rendered="#{not empty menuConseillerBean.selectedCar}" columnClasses="label,value">
+                                <p:panelGrid  columns="2" rendered="#{not empty menuConseillerBean.selectedClient}" columnClasses="label,value">
                                     <f:facet name="header">
                                         <p:graphicImage library="images" name="thomasT.jpg"/>
                                     </f:facet>
