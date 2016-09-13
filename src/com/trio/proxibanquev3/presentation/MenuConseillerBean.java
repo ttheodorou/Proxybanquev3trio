@@ -4,10 +4,10 @@ import com.trio.proxibanquev3.domaine.Client;
 import com.trio.proxibanquev3.exception.DAOException;
 import com.trio.proxibanquev3.service.ClientService;
 
+import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,18 +27,17 @@ public class MenuConseillerBean {
         ClientService clientService = new ClientService();
 
         try {
+
             clients = clientService.lireToutesLesClientsByidConseiller(loginBean.getConseiller());
-            System.out.println();
+
         } catch (DAOException e) {
+//            la ligne suivante n'est pas possible car sinon on sort du contexte géré par le listener de JSF
+//                FacesContext.getCurrentInstance().getExternalContext().redirect(loginBean.getNavigateBean().redirectToError(e.getMessage()));
+                FacesContext fc = FacesContext.getCurrentInstance();
+                NavigationHandler nh = fc.getApplication().getNavigationHandler();
+                nh.handleNavigation(fc, null, loginBean.getNavigateBean().redirectToError(e.getMessage()));
 
-            e.printStackTrace();
-            try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect(loginBean.getNavigateBean().redirectToError(e.getMessage()));
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
         }
-
     }
 
 
@@ -47,8 +46,10 @@ public class MenuConseillerBean {
         ClientService clientService = new ClientService();
 
         try {
+
             clients = clientService.lireToutesLesClientsByidConseiller(loginBean.getConseiller());
-            System.out.println();
+            selectedClient = null;
+
         } catch (DAOException e) {
 
             e.printStackTrace();
