@@ -12,9 +12,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
-
 import com.trio.proxibanquev3.domaine.Client;
 import com.trio.proxibanquev3.domaine.CompteBancaire;
 import com.trio.proxibanquev3.exception.DAOException;
@@ -22,6 +19,12 @@ import com.trio.proxibanquev3.exception.ServiceException;
 import com.trio.proxibanquev3.service.ClientService;
 import com.trio.proxibanquev3.service.CompteBancaireService;
 
+/**
+ * Managed Bean concernant les virements
+ * 
+ * @author Trio
+ *
+ */
 @ManagedBean(name = "virementbean")
 @SessionScoped
 public class VirementBean implements Serializable {
@@ -204,6 +207,11 @@ public class VirementBean implements Serializable {
 
 	ClientService clientService = new ClientService();
 
+	/**
+	 * Méthode init en post construct qui permet de charger la liste des
+	 * clients, ainsi que la liste de leurs comptes bancaires associés, et de
+	 * les mettre dans une map.
+	 */
 	@PostConstruct
 	public void init() {
 		try {
@@ -305,7 +313,11 @@ public class VirementBean implements Serializable {
 		return data;
 	}
 
-	public void onCountryChange() {
+	/**
+	 * Méthode qui permet de charger en mémoire les comptes bancaires associés
+	 * au client à débiter
+	 */
+	public void chargementDesComptesAssociesClient1() {
 
 		if (client1 != null && !client1.equals(""))
 			comptes1 = data.get(client1);
@@ -313,7 +325,11 @@ public class VirementBean implements Serializable {
 			comptes1 = new HashMap<String, String>();
 	}
 
-	public void onCountryChange2() {
+	/**
+	 * Méthode qui permet de charger en mémoire les comptes bancaires associés
+	 * au client à créditer
+	 */
+	public void chargementDesComptesAssociesClient2() {
 
 		if (client2 != null && !client2.equals(""))
 			comptes2 = data.get(client2);
@@ -321,7 +337,16 @@ public class VirementBean implements Serializable {
 			comptes2 = new HashMap<String, String>();
 	}
 
-	public String displayLocation() {
+	/**
+	 * Méthode qui permet, lors du clic sur le bouton, de valider le virement,
+	 * en prenant en compte les deux comptes sélectionnés et le montant du
+	 * virement.
+	 * 
+	 * @return un String qui redirige vers la page suivante
+	 */
+	public String validationVirement() {
+		LoginBean loginBean = (LoginBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
+				.get("loginBean");
 		FacesMessage msg = null;
 		String resultat;
 		Long idCompte1;
@@ -350,12 +375,16 @@ public class VirementBean implements Serializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return "#{navigateBean.redirectToMenuConseiller}";
+			String redirectVrai = loginBean.getNavigateBean().redirectToMenuConseiller();
+
+			return redirectVrai;
 
 		} else
 			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalide", "comptes et/ou montant non selectionné.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
-		return "#{navigateBean.redirectToError}";
+		String redirect = loginBean.getNavigateBean()
+				.redirectToError("Erreur lors de la tentative de virement. La procédure est annulée !");
+		return redirect;
 
 	}
 

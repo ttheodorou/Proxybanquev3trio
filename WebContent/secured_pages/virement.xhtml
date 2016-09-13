@@ -28,7 +28,8 @@
 								<p:outputLabel for="client1" value="Client : " />
 								<p:selectOneMenu id="client1" value="#{virementbean.client1}"
 									style="width:150px">
-									<p:ajax listener="#{virementbean.onCountryChange}"
+									<p:ajax
+										listener="#{virementbean.chargementDesComptesAssociesClient1}"
 										update="compte1" />
 									<f:selectItem itemLabel="Choisissez un client" itemValue=""
 										noSelectionOption="true" />
@@ -51,7 +52,8 @@
 								<p:outputLabel for="client2" value="Client : " />
 								<p:selectOneMenu id="client2" value="#{virementbean.client2}"
 									style="width:150px">
-									<p:ajax listener="#{virementbean.onCountryChange2}"
+									<p:ajax
+										listener="#{virementbean.chargementDesComptesAssociesClient2}"
 										update="compte2" />
 									<f:selectItem itemLabel="Choisissez un client" itemValue=""
 										noSelectionOption="true" />
@@ -80,9 +82,9 @@
 
 
 					<p:separator />
-					<p:commandButton value="Valider le virement" update="msgs" style="margin-bottom:10px;"
-						actionListener="#{virementbean.displayLocation}"
-						icon="ui-icon-check" />
+					<p:commandButton value="Valider le virement" update="msgs"
+						style="margin-bottom:10px;"
+						action="#{virementbean.validationVirement}" icon="ui-icon-check" />
 				</p:panel>
 			</h:form>
 
