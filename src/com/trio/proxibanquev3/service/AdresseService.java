@@ -19,27 +19,47 @@ import com.trio.proxibanquev3.exception.DAOException;
  *
  */
 //@Model
-public class AdresseService {
+public class AdresseService implements IAdresseService {
  
 	
 	private AdresseDAO adresseDAO = new AdresseDAO();
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IAdresseService#creerUneAdresse(com.trio.proxibanquev3.domaine.Adresse)
+	 */
+	@Override
 	public void creerUneAdresse(Adresse adresse) throws DAOException {
 		adresseDAO.creerUneAdresse(adresse);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IAdresseService#lireToutesLesAdresses()
+	 */
+	@Override
 	public List<Adresse> lireToutesLesAdresses() throws DAOException {
 		return adresseDAO.lireToutesLesAdresses();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IAdresseService#lireUneAdresse(long)
+	 */
+	@Override
 	public Adresse lireUneAdresse(long idAdresse) throws DAOException {
 		return adresseDAO.lireUneAdresse(idAdresse);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IAdresseService#mAJUneAdresse(com.trio.proxibanquev3.domaine.Adresse)
+	 */
+	@Override
 	public void mAJUneAdresse(Adresse adresse) throws DAOException {
 		adresseDAO.mAJUneAdresse(adresse);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IAdresseService#supprimerUneAdresse(com.trio.proxibanquev3.domaine.Adresse)
+	 */
+	@Override
 	public void supprimerUneAdresse(Adresse adresse) throws DAOException {
 		adresseDAO.supprimerUneAdresse(adresse);
 	}

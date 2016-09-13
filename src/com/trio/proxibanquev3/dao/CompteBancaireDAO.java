@@ -26,7 +26,7 @@ import com.trio.proxibanquev3.exception.DAOException;
  * @author Vincent Blameble
  *
  */
-//@Model
+// @Model
 public class CompteBancaireDAO implements ICompteBancaireDAO {
 	// private EntityManagerFactory emf =
 	// Persistence.createEntityManagerFactory("proxibanquev3-pu");
@@ -34,7 +34,9 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 	private EntityManager em = null;
 	private EntityTransaction tx = null;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#startContext()
 	 */
 	@Override
@@ -45,7 +47,9 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#closeContext()
 	 */
 	@Override
@@ -56,8 +60,12 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#creerUnCompteBancaire(com.trio.proxibanquev3.domaine.CompteBancaire)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.trio.proxibanquev3.dao.ICompteBancaireDAO#creerUnCompteBancaire(com.
+	 * trio.proxibanquev3.domaine.CompteBancaire)
 	 */
 	@Override
 	public void creerUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
@@ -77,8 +85,11 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#lireToutesLesCompteBancaires()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#
+	 * lireToutesLesCompteBancaires()
 	 */
 	@Override
 	public List<CompteBancaire> lireToutesLesCompteBancaires() throws DAOException {
@@ -106,8 +117,11 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 		return comptesBancaires;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#lireToutesLesCompteBancairesByClient(long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#
+	 * lireToutesLesCompteBancairesByClient(long)
 	 */
 	@Override
 	public List<CompteBancaire> lireToutesLesCompteBancairesByClient(long idClient) throws DAOException {
@@ -136,8 +150,12 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 		return comptesBancaires;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#lireToutesLesCompteBancairesByClient(com.trio.proxibanquev3.domaine.Client)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#
+	 * lireToutesLesCompteBancairesByClient(com.trio.proxibanquev3.domaine.
+	 * Client)
 	 */
 	@Override
 	public List<CompteBancaire> lireToutesLesCompteBancairesByClient(Client client) throws DAOException {
@@ -150,8 +168,7 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 			CriteriaQuery<CompteBancaire> criteriaRequete = criteriaBuilder.createQuery(CompteBancaire.class);
 			Root<CompteBancaire> fromcompteBancaire = criteriaRequete.from(CompteBancaire.class);
 			criteriaRequete.select(fromcompteBancaire);
-			criteriaRequete.where(
-					criteriaBuilder.equal(fromcompteBancaire.get("proprietaire_idPersonne"), client.getIdPersonne()));
+			criteriaRequete.where(criteriaBuilder.equal(fromcompteBancaire.get("proprietaire"), client));
 			TypedQuery<CompteBancaire> requete = em.createQuery(criteriaRequete);
 			comptesBancaires = requete.getResultList();
 			tx.commit();
@@ -167,8 +184,11 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 		return comptesBancaires;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#lireUnCompteBancaire(long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.trio.proxibanquev3.dao.ICompteBancaireDAO#lireUnCompteBancaire(long)
 	 */
 	@Override
 	public CompteBancaire lireUnCompteBancaire(long idCompteBancaire) throws DAOException {
@@ -198,8 +218,12 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 		return compteBancaire;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#mAJUnCompteBancaire(com.trio.proxibanquev3.domaine.CompteBancaire)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.trio.proxibanquev3.dao.ICompteBancaireDAO#mAJUnCompteBancaire(com.
+	 * trio.proxibanquev3.domaine.CompteBancaire)
 	 */
 	@Override
 	public void mAJUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {
@@ -218,8 +242,12 @@ public class CompteBancaireDAO implements ICompteBancaireDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.trio.proxibanquev3.dao.ICompteBancaireDAO#supprimerUnCompteBancaire(com.trio.proxibanquev3.domaine.CompteBancaire)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.trio.proxibanquev3.dao.ICompteBancaireDAO#supprimerUnCompteBancaire(
+	 * com.trio.proxibanquev3.domaine.CompteBancaire)
 	 */
 	@Override
 	public void supprimerUnCompteBancaire(CompteBancaire compteBancaire) throws DAOException {

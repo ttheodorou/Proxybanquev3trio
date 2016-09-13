@@ -22,33 +22,57 @@ import com.trio.proxibanquev3.exception.DAOException;
  *
  */
 //@Model
-public class ConseillerService {
+public class ConseillerService implements IConseillerService {
 	
 	//@Inject
 	private ConseillerDAO conseillerDAO = new ConseillerDAO();
 
 	
 	
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IConseillerService#creerUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	 */
+	@Override
 	public void creerUnConseiller(Conseiller conseiller) throws DAOException {
 		conseillerDAO.creerUnConseiller(conseiller);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IConseillerService#lireToutesLesConseillers()
+	 */
+	@Override
 	public List<Conseiller> lireToutesLesConseillers() throws DAOException {
 		return conseillerDAO.lireToutesLesConseillers();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IConseillerService#lireUnConseiller(long)
+	 */
+	@Override
 	public Conseiller lireUnConseiller(long idConseiller) throws DAOException {
 		return conseillerDAO.lireUnConseiller(idConseiller);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IConseillerService#lireUnConseiller(java.lang.String)
+	 */
+	@Override
 	public Conseiller lireUnConseiller(String login) throws DAOException {
 		return conseillerDAO.lireUnConseiller(login);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IConseillerService#MAJUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	 */
+	@Override
 	public void MAJUnConseiller(Conseiller conseiller) throws DAOException {
 		conseillerDAO.mAJUnConseiller(conseiller);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IConseillerService#SupprimerUnConseiller(com.trio.proxibanquev3.domaine.Conseiller)
+	 */
+	@Override
 	public void SupprimerUnConseiller(Conseiller conseiller) throws DAOException {
 		conseillerDAO.supprimerUnConseiller(conseiller);
 	}

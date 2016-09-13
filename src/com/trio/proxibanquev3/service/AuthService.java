@@ -19,11 +19,15 @@ import com.trio.proxibanquev3.exception.DAOException;
  *
  */
 //@Model
-public class AuthService {
+public class AuthService implements IAuthService {
 	
 	//@Inject
 	private ConseillerDAO conseillerDAO=new ConseillerDAO();
 	
+	/* (non-Javadoc)
+	 * @see com.trio.proxibanquev3.service.IAuthService#authentification(java.lang.String, java.lang.String)
+	 */
+	@Override
 	public boolean authentification(String login,String password) throws DAOException{
 		return conseillerDAO.authentification(login,password);
 	}

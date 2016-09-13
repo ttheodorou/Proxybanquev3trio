@@ -4,6 +4,7 @@ import com.trio.proxibanquev3.domaine.Conseiller;
 import com.trio.proxibanquev3.exception.DAOException;
 import com.trio.proxibanquev3.service.AuthService;
 import com.trio.proxibanquev3.service.ConseillerService;
+import com.trio.proxibanquev3.service.IAuthService;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

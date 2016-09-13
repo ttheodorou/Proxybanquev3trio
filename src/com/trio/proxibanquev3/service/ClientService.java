@@ -55,11 +55,24 @@ public class ClientService implements IClientService {
 		return clientDAO.lireToutesLesClients();
 	}
 
-	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.trio.proxibanquev3.service.IClientService#
+	 * lireToutesLesClientsByidConseiller(long)
+	 */
+	@Override
 	public List<Client> lireToutesLesClientsByidConseiller(long idConseiller) throws DAOException {
 		return clientDAO.lireToutesLesClientsByidConseiller(idConseiller);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.trio.proxibanquev3.service.IClientService#
+	 * lireToutesLesClientsByidConseiller(long)
+	 */
+	@Override
 	public List<Client> lireToutesLesClientsByidConseiller(Conseiller conseiller) throws DAOException {
 		return clientDAO.lireToutesLesClientsByidConseiller(conseiller);
 	}
