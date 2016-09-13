@@ -18,6 +18,10 @@
 				<f:facet name="options">
 					<p:commandButton value="Retour menu principal" action="#{navigateBean.redirectToMenuConseiller}"/>
 				</f:facet>
+				
+				<f:facet name="options">
+					<p:commandButton value="Faire un virement" action="#{navigateBean.redirectToVirement()}"/>
+				</f:facet>
 
 				<f:facet name="options">
 					<p:commandButton style="margin-right:10px" action="#{loginBean.disconnect}" value="Logout" icon="ui-icon-extlink" />
