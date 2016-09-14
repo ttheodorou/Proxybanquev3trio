@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Proxybanquev3trio:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Proxybanquev3trio-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Proxybanquev3trio:war exploded" />
+    </root>
+  </artifact>
+</component>

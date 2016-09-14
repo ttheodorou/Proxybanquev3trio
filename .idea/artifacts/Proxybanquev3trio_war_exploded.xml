@@ -1,11 +1,48 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="Proxybanquev3trio:war exploded">
-    <output-path>$PROJECT_DIR$/classes/artifacts/Proxybanquev3trio_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/target/Proxybanquev3trio-1.0-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Proxybanquev3trio" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax.enterprise:cdi-api:1.2" />
+          <element id="library" level="project" name="Maven: javax.el:javax.el-api:3.0.0" />
+          <element id="library" level="project" name="Maven: javax.interceptor:javax.interceptor-api:1.2" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: org.jboss.weld.servlet:weld-servlet-core:2.3.5.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.weld.environment:weld-environment-common:2.3.5.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.weld:weld-core-impl:2.3.5.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.classfilewriter:jboss-classfilewriter:1.1.2.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:18.0" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.weld:weld-spi:2.3.SP2" />
+          <element id="library" level="project" name="Maven: org.jboss.weld:weld-api:2.3.SP2" />
+          <element id="library" level="project" name="Maven: org.jboss.weld.probe:weld-probe-core:2.3.5.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.weld:weld-core-jsf:2.3.5.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.el:jboss-el-api_3.0_spec:1.0.0.Alpha1" />
+          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.2.1.Final" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.39" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:3.6.7.Final" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.6" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.1" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-commons-annotations:3.2.0.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" />
+          <element id="library" level="project" name="Maven: javax.transaction:jta:1.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:3.6.7.Final" />
+          <element id="library" level="project" name="Maven: javassist:javassist:3.12.0.GA" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-ehcache:3.6.7.Final" />
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.4.3" />
+          <element id="library" level="project" name="Maven: org.glassfish:javax.faces:2.2.9" />
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:6.0" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/Proxybanquev3trio-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="Proxybanquev3trio/web/Web" />
     </root>
