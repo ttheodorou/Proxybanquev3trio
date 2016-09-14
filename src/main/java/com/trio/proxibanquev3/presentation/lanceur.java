@@ -1,22 +1,12 @@
 package com.trio.proxibanquev3.presentation;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.inject.Inject;
-
-import com.trio.proxibanquev3.domaine.Adresse;
-import com.trio.proxibanquev3.domaine.Client;
-import com.trio.proxibanquev3.domaine.CompteCourant;
-import com.trio.proxibanquev3.domaine.CompteEpargne;
-import com.trio.proxibanquev3.domaine.Conseiller;
-import com.trio.proxibanquev3.exception.DAOException;
-import com.trio.proxibanquev3.service.AdresseService;
+import com.trio.proxibanquev3.domaine.*;
 import com.trio.proxibanquev3.service.ClientService;
 import com.trio.proxibanquev3.service.CompteBancaireService;
 import com.trio.proxibanquev3.service.ConseillerService;
-import com.trio.proxibanquev3.service.IClientService;
+import org.apache.log4j.BasicConfigurator;
+
+import java.util.Date;
 
 public class lanceur {
 	
@@ -24,6 +14,7 @@ public class lanceur {
 	public static void main(String[] args) {
 
 		//creationBase();
+		BasicConfigurator.configure();
 		
 	}
 	

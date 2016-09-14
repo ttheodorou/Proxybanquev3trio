@@ -39,6 +39,8 @@
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.4.3" />
           <element id="library" level="project" name="Maven: org.glassfish:javax.faces:2.2.9" />
           <element id="library" level="project" name="Maven: org.primefaces:primefaces:6.0" />
+          <element id="library" level="project" name="Maven: log4j:apache-log4j-extras:1.2.17" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
         </element>
       </element>
       <element id="directory" name="META-INF">

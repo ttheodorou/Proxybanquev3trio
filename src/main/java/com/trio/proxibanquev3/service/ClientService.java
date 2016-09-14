@@ -3,17 +3,15 @@
  */
 package com.trio.proxibanquev3.service;
 
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
-import javax.inject.Inject;
-
 import com.trio.proxibanquev3.dao.ClientDAO;
-import com.trio.proxibanquev3.dao.IClientDAO;
 import com.trio.proxibanquev3.domaine.Client;
 import com.trio.proxibanquev3.domaine.Conseiller;
 import com.trio.proxibanquev3.exception.DAOException;
+import org.apache.log4j.Logger;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.inject.Model;
+import java.util.List;
 
 /**
  * Classe permettant d'utiliser un objet ClientService en charge des
@@ -26,11 +24,13 @@ import com.trio.proxibanquev3.exception.DAOException;
 @Model
 public class ClientService implements IClientService {
 
+	private final static Logger logger = Logger.getLogger(ClientService.class);
+
 	// @Inject
 	ClientDAO clientDAO = new ClientDAO();
 
 	public ClientService() {
-		System.out.println("debut construction Client Service");
+		logger.debug("debut construction Client Service");
 	}
 
 	/*
@@ -42,7 +42,9 @@ public class ClientService implements IClientService {
 	 */
 	@Override
 	public void creerUnClient(Client client) throws DAOException {
+		logger.info("On demande a créer un client");
 		clientDAO.creerUnClient(client);
+		logger.info("On a créé un client (peut avoir échoué)");
 	}
 
 	/*
@@ -52,6 +54,7 @@ public class ClientService implements IClientService {
 	 */
 	@Override
 	public List<Client> lireToutesLesClients() throws DAOException {
+		logger.info("On demande a lire tous les clients");
 		return clientDAO.lireToutesLesClients();
 	}
 
@@ -63,6 +66,7 @@ public class ClientService implements IClientService {
 	 */
 	@Override
 	public List<Client> lireToutesLesClientsByidConseiller(long idConseiller) throws DAOException {
+		logger.info("On demande à lire tous les clients qui sont rattachés à un conseiller particulier ciblé par son identifiant");
 		return clientDAO.lireToutesLesClientsByidConseiller(idConseiller);
 	}
 
@@ -74,6 +78,7 @@ public class ClientService implements IClientService {
 	 */
 	@Override
 	public List<Client> lireToutesLesClientsByidConseiller(Conseiller conseiller) throws DAOException {
+		logger.info("On demande à lire tous les clients qui sont rattachés à un conseiller particulier ciblé par lui même");
 		return clientDAO.lireToutesLesClientsByidConseiller(conseiller);
 	}
 
@@ -84,6 +89,7 @@ public class ClientService implements IClientService {
 	 */
 	@Override
 	public Client lireUnClient(long idClient) throws DAOException {
+		logger.info("On demande à lire un client par son identifiant");
 		return clientDAO.lireUnClient(idClient);
 	}
 
@@ -95,7 +101,9 @@ public class ClientService implements IClientService {
 	 */
 	@Override
 	public void mAJUnClient(Client client) throws DAOException {
+		logger.info("On demande à mettre à jour un client");
 		clientDAO.mAJUnClient(client);
+		logger.info("On a fini la mise à jour du client (peut avoir échoué)");
 	}
 
 	/*
@@ -107,12 +115,14 @@ public class ClientService implements IClientService {
 	 */
 	@Override
 	public void supprimerUnClient(Client client) throws DAOException {
+		logger.info("On demande a supprimer un client");
 		clientDAO.supprimerUnClient(client);
+		logger.info("On a fini la suppresion du client (peut avoir échoué)");
 	}
 
 	@PostConstruct
 	public void logapresconstruction() {
-		System.out.println("service construit client");
+		logger.debug("service construit client");
 	}
 
 }
