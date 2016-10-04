@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Proxybanquev3trio</display-name>
-  <welcome-file-list>
-    <welcome-file>login.xhtml</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Proxybanquev3trio</display-name>
+	<welcome-file-list>
+		<welcome-file>login.xhtml</welcome-file>
+	</welcome-file-list>
 
 
 
-	<!--Apply filter to secure pages from direct access-->
+	<!--Apply filter to secure pages from direct access -->
 	<filter>
 		<filter-name>LoginFilter</filter-name>
 		<filter-class>com.trio.proxibanquev3.presentation.LoginFilter</filter-class>
 	</filter>
-  	<filter-mapping>
+	<filter-mapping>
 		<filter-name>LoginFilter</filter-name>
 		<url-pattern>/secured_pages/*</url-pattern>
 	</filter-mapping>
-  <!-- 2/ Mapping URLS /Faces/* vers la servlet JSF Faces Servlet -->
+	<!-- 2/ Mapping URLS /Faces/* vers la servlet JSF Faces Servlet -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -37,17 +40,65 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>afterwork</param-value>
 	</context-param>
-	
-	
-	<context-param>
-	<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-	<param-value>client</param-value>
-	</context-param>
-	
 
-  <listener>
-    <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
-  </listener>
-  
+
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+
+
+	<listener>
+		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+	</listener>
+
+	<!-- La sécurité des pages internet -->
+	<!-- Define a Security Constraint on this Application -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>page sécurisée</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- Security roles referenced by this web application -->
+	<security-role>
+		<description>
+      le role requis pour accéder aux pages
+    </description>
+		<role-name>admin</role-name>
+	</security-role>
+
+
+	<!-- Define the Login Configuration for this Application : ici avec le pop 
+		up -->
+	<!-- <login-config> -->
+	<!-- <auth-method>BASIC</auth-method> -->
+	<!-- <realm-name>Tomcat Manager Application</realm-name> -->
+	<!-- </login-config> -->
+
+	<!-- Define the Login Configuration for this Application : ici avec un formulaire -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>un royaume pas comme les autres</realm-name>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/erreur.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<!-- Déclaration DataSource pour la sécurité des pages web -->
+	<!-- necessite la configuration du fichier context.xml du serveur -->
+	
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/formation</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
 </web-app>
 
